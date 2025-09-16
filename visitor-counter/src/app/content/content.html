@@ -1,1 +1,31 @@
-<p>content works!</p>
+<div class="container">
+  <h2>Dashboard - Sensores</h2>
+
+  <div style="max-width: 900px">
+    <canvas baseChart
+            [data]="lineChartData"
+            [options]="lineChartOptions"
+            chartType="line">
+    </canvas>
+  </div>
+
+  <h3>Últimos eventos</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Horário</th>
+        <th>Sensor</th>
+        <th>Detectado</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of events">
+        <td>{{ e.time ? (e.time | date:'medium') : (e.timestamp | date:'medium') }}</td>
+        <td>{{ e.sensorId }}</td>
+        <td>{{ e.detected }}</td>
+        <td>{{ e.value ?? '-' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
