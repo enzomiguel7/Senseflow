@@ -10,7 +10,7 @@ import mariadb from "mariadb";
 const pool = mariadb.createPool({
   host: process.env.DB_HOST || "mariadb",
   user: process.env.DB_USER || "root",
-  password: process.env.DB_PASS || "0000",
+  password: process.env.DB_PASS || "0",
   database: process.env.DB_NAME || "RegistrosSensor",
   connectionLimit: 5
 });
@@ -37,7 +37,12 @@ client.on("connect", () => {
 
 client.on("message", async (topic, payload) => {
   try {
-    const msg = JSON.parse(payload.toString());
+    // converte para string e remove espaços extras
+    const msgStr = payload.toString('utf-8').trim();
+
+    // tenta parsear JSON
+    const msg = JSON.parse(msgStr);
+
     const timestamp = msg.timestamp
       ? new Date(msg.timestamp).toISOString().slice(0, 19).replace("T", " ")
       : new Date().toISOString().slice(0, 19).replace("T", " ");
@@ -50,7 +55,6 @@ client.on("message", async (topic, payload) => {
       timestamp
     };
 
-    // Inserção no MariaDB
     const conn = await pool.getConnection();
     await conn.query(
       `INSERT INTO sensor_events(sensor_id, type, detected, value, timestamp)
@@ -61,7 +65,6 @@ client.on("message", async (topic, payload) => {
 
     console.log("💾 Evento salvo no DB:", event);
 
-    // Envia para frontend em tempo real
     io.emit("sensor_event", event);
 
   } catch (err) {

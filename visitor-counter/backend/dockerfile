@@ -2,12 +2,12 @@ FROM node:20
 
 WORKDIR /app
 
-# Copia apenas o package.json do backend
-COPY package.json package-lock.json* ./
+COPY package*.json ./
+RUN npm install --legacy-peer-deps
 
-RUN npm install
-
-# Copia todo o backend
 COPY . .
 
-CMD ["npm", "run", "start"]
+EXPOSE 3000
+
+RUN npm install -g ts-node-dev typescript
+CMD ["ts-node-dev", "server.ts"]
