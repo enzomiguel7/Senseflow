@@ -1,0 +1,19 @@
+<h2>Últimos eventos</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Horário</th>
+      <th>Sensor</th>
+      <th>Detectado</th>
+      <th>Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let e of events">
+      <td>{{ e.timestamp | date:'short' }}</td>
+      <td>{{ e.sensor_id }}</td>
+      <td>{{ e.detected }}</td>
+      <td>{{ e.value ?? '-' }}</td>
+    </tr>
+  </tbody>
+</table>

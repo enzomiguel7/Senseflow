@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="sign-in-section">
+    <h1>Login</h1>
+    <p>Bem-vindo! Faça login para continuar.</p>
+    <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required />
+    <input type="password" placeholder="Senha" [(ngModel)]="senha" name="senha" required />
+    <p>{{ message }}</p>
+
+    <button class="sign-in-btn" (click)="onLogin()">Entrar</button>
+  </div>
+
+  <div class="sign-up-section">
+    <h2>Não tem conta?</h2>
+    <p>Registre-se aqui!</p>
+    <button class="sign-up-btn" (click)="redirectToRegister()">Registrar-se</button>
+  </div>
+</div>

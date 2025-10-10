@@ -1,0 +1,35 @@
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./backend/mosquitto/config:/mosquitto/config
+
+  mariadb:
+    image: mariadb:12
+    environment:
+      MARIADB_ROOT_PASSWORD: 0
+      MARIADB_DATABASE: RegistrosSensor
+    ports:
+      - "3307:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  backend:  # <-- tem que estar dentro de "services:", alinhado com "mariadb" e "mosquitto"
+    build: ./backend/DockerBuild
+    environment:
+      DB_HOST: mariadb
+      DB_USER: root
+      DB_PASS: 0
+      DB_NAME: RegistrosSensor
+      MQTT_BROKER_URL: mqtt://mosquitto:1883
+
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mosquitto
+      - mariadb
+
+volumes:
+  mariadb_data:

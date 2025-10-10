@@ -1,0 +1,19 @@
+<h2>Eventos do Sensor</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Sensor</th>
+      <th>Tipo</th>
+      <th>Detectado</th>
+      <th>Timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ev of events">
+      <td>{{ ev.sensor_id }}</td>
+      <td>{{ ev.type }}</td>
+      <td>{{ ev.detected ? 'Sim' : 'Não' }}</td>
+      <td>{{ ev.timestamp | date:'dd/MM/yyyy HH:mm:ss' }}</td>
+    </tr>
+  </tbody>
+</table>
