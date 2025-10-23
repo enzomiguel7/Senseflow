@@ -10383,4 +10383,4 @@ apexcharts/dist/apexcharts.esm.js:
   * BUILT: Fri Sep 13 2024 12:43:14 GMT+0200 (Central European Summer Time)
   *)
 */
-//# sourceMappingURL=apexcharts.esm-ZZIULO5I.js.map
+//# sourceMappingURL=apexcharts.esm-GXWWQDZE.js.map
