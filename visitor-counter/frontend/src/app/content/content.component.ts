@@ -1,36 +1,27 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ApiService } from '../services/api';
-import { RealtimeService } from '../services/realtime';
-import { Subscription } from 'rxjs';
-import { CommonModule, DatePipe } from '@angular/common';
-
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard',
-  standalone: true,
-  imports: [CommonModule, DatePipe],  // <- adicione DatePipe aqui
+  selector: 'app-home',
   templateUrl: './content.html',
   styleUrls: ['./content.css']
-})    
-export class DashboardComponent implements OnInit, OnDestroy {
+})
+export class ContentComponent {
 
-  events: any[] = [];
-  realtimeSub!: Subscription;
+  constructor(private router: Router) {}
 
-  constructor(private api: ApiService, private realtime: RealtimeService) { }
-
-  ngOnInit(): void {
-    this.api.getEvents(undefined, 200).subscribe(data => {
-      this.events = data;
-    });
-
-    this.realtimeSub = this.realtime.onEvent().subscribe(event => {
-      this.events.unshift(event);
-      if (this.events.length > 200) this.events.pop();
-    });
+  logout() {
+    localStorage.removeItem('token');
+    // Aqui você pode chamar seu serviço de autenticação para remover tokens/session
+    console.log('Logout efetuado');
+    this.router.navigate(['/login']);
   }
 
-  ngOnDestroy(): void {
-    this.realtimeSub?.unsubscribe();
+  goToEvents() {
+    this.router.navigate(['/events']);
+  }
+
+  goToCharts() {
+    this.router.navigate(['/charts']);
   }
 }

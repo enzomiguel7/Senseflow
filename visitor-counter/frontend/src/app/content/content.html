@@ -1,19 +1,28 @@
-<h2>Últimos eventos</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Horário</th>
-      <th>Sensor</th>
-      <th>Detectado</th>
-      <th>Valor</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let e of events">
-      <td>{{ e.timestamp | date:'short' }}</td>
-      <td>{{ e.sensor_id }}</td>
-      <td>{{ e.detected }}</td>
-      <td>{{ e.value ?? '-' }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="page-wrapper">
+    <header class="app-header">
+        <h1 class="header-title">Visitor-Counter 📊</h1>
+        <nav class="user-actions">
+            <button class="logout-btn" (click)="logout()">
+                Sair <span class="logout-icon">🚪</span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main-dashboard-content">
+        <section class="welcome-section">
+            <h2 class="welcome-message">Bem-vindo(a) ao sistema de monitoramento!</h2>
+            <p class="subtitle">Selecione uma opção abaixo para começar:</p>
+        </section>
+        
+        <section class="navigation-section">
+            <div class="button-group">
+                <button class="nav-btn primary-btn" (click)="goToEvents()">
+                    <span class="btn-icon">📅</span> Ver Eventos
+                </button>
+                <button class="nav-btn secondary-btn" (click)="goToCharts()">
+                    <span class="btn-icon">📈</span> Gráficos e Relatórios
+                </button>
+            </div>
+        </section>
+    </main>
+</div>

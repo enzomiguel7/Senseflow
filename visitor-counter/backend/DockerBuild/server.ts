@@ -12,7 +12,7 @@ const pool = mariadb.createPool({
   user: process.env.DB_USER || "root",
   password: process.env.DB_PASS || "0",
   database: process.env.DB_NAME || "RegistrosSensor",
-  connectionLimit: 5
+  connectionLimit: 10
 });
 
 /* ============ Express + Socket.IO ============ */
