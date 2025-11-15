@@ -6,17 +6,19 @@
             <span class="logo-text">LibraryFlow</span>
         </div>
 
-        <nav class="main-nav">
-            <a routerLink="/inicio" class="nav-item active" data-text="Início">
-                <span class="material-symbols-outlined">home</span> Início
-            </a>
-            <a routerLink="/relatorios" class="nav-item" data-text="Relatórios">
-                <span class="material-symbols-outlined">bar_chart</span> Relatórios
-            </a>
-            <a routerLink="/configuracoes" class="nav-item" data-text="Configurações">
-                <span class="material-symbols-outlined">settings</span> Configurações
-            </a>
-        </nav>
+       <nav class="main-nav"> 
+        <button class="nav-item active" (click)="goToEvents()">
+            <span class="material-symbols-outlined">home</span> Início
+        </button>
+
+        <button class="nav-item" (click)="goToEvents()">
+            <span class="material-symbols-outlined">bar_chart</span> Relatórios
+        </button>
+
+        <button class="nav-item" (click)="goToEvents()">
+            <span class="material-symbols-outlined">settings</span> Configurações
+        </button>
+    </nav>
 
         <div class="sidebar-footer">
             <a routerLink="/ajuda" class="nav-item" data-text="Ajuda">

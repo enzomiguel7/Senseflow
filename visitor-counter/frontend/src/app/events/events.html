@@ -5,32 +5,33 @@
 
 <div class="dashboard-container">
         
-    <aside class="sidebar">
-        <div class="logo-area">
-            <span class="material-symbols-outlined logo-icon">auto_stories</span>
-            <span class="logo-text">LibraryFlow</span>
-        </div>
+<aside class="sidebar">
+    <div class="logo-area">
+        <span class="material-symbols-outlined logo-icon">auto_stories</span>
+        <span class="logo-text">LibraryFlow</span>
+    </div>
 
-        <nav class="main-nav">
-            <a routerLink="/inicio" class="nav-item">
-                <span class="material-symbols-outlined">home</span> Início
-            </a>
+    <nav class="main-nav">
+        <button class="nav-item" (click)="redirectToContent()">
+            <span class="material-symbols-outlined">home</span> Início
+        </button>
 
-            <a routerLink="/relatorios" class="nav-item active">
-                <span class="material-symbols-outlined">bar_chart</span> Relatórios
-            </a>
+        <button class="nav-item active" (click)="redirectToContent()">
+            <span class="material-symbols-outlined">bar_chart</span> Relatórios
+        </button>
 
-            <a routerLink="/configuracoes" class="nav-item">
-                <span class="material-symbols-outlined">settings</span> Configurações
-            </a>
-        </nav>
+        <button class="nav-item" (click)="redirectToContent()">
+            <span class="material-symbols-outlined">settings</span> Configurações
+        </button>
+    </nav>
 
-        <div class="sidebar-footer">
-            <a routerLink="/ajuda" class="nav-item">
-                <span class="material-symbols-outlined">help</span> Ajuda
-            </a>
-        </div>
-    </aside>
+    <div class="sidebar-footer">
+        <button class="nav-item" (click)="redirectToContent()">
+            <span class="material-symbols-outlined">help</span> Ajuda
+        </button>
+    </div>
+</aside>
+
 
     <main class="content-area">
 
@@ -44,7 +45,7 @@
 
             <div class="card monthly-flow">
                 <div class="card-header">
-                    <h2 class="card-title">Análise de Fluxo de Pessoas</h2>
+                    <h2 class="card-title">Registro de Visitantes</h2>
                     <div class="header-actions">
                         <span class="date-range"></span>
                     </div>
@@ -52,30 +53,29 @@
 
                 <div class="card-body monthly-flow-body">
                     <div class="chart-container">
-                        <div class="table-section" style="max-height: 100%; width: 100%; box-shadow: none; padding: 10px;">
-                            <h1>Registro de Visitantes</h1>
+    <div class="table-section">
+        <table class="visitor-table">
+            <thead>
+                <tr>
+                    <th>Id do sensor</th>
+                    <th>Tipo do sensor</th>
+                    <th>Data</th>
+                    <th>Hora</th>
+                </tr>
+            </thead>
 
-                            <table class="visitor-table">
-                                <thead>
-                                    <tr>
-                                        <th>Id do sensor</th>
-                                        <th>Tipo do sensor</th>
-                                        <th>Data</th>
-                                        <th>Hora</th>
-                                    </tr>
-                                </thead>
+            <tbody>
+                <tr *ngFor="let ev of events">
+                    <td>{{ev.sensor_id}}</td>
+                    <td>{{ev.type}}</td>
+                    <td>{{ev.date_}}</td>
+                    <td>{{ev.time_}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-                                <tbody>
-                                    <tr *ngFor="let ev of events">
-                                        <td>{{ev.sensor_id}}</td>
-                                        <td>{{ev.type}}</td>
-                                        <td>{{ev.date_}}</td>
-                                        <td>{{ev.time_}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
                 </div>
             </div>
 

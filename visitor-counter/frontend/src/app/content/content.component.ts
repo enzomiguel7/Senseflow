@@ -25,4 +25,12 @@ export class ContentComponent {
   goToCharts() {
     this.router.navigate(['/charts']);
   }
+
+  goToContent() {
+    this.router.navigate(['/content']);
+  }
+
+
 }
+
+
