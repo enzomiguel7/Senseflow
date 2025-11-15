@@ -1,9 +1,157 @@
-<div class="chart-container">
-  <apx-chart
-    *ngIf="chartOptions"
-    [series]="chartOptions.series"
-    [chart]="chartOptions.chart"
-    [labels]="chartOptions.labels"
-    [title]="chartOptions.title"
-  ></apx-chart>
+<!-- Angular-compatible template version of your page -->
+<!-- Use this as the template of a component: configuracoes.component.html -->
+
+<div class="dashboard-container">
+  <aside class="sidebar">
+    <div class="logo-area">
+      <span class="material-symbols-outlined logo-icon">auto_stories</span>
+      <span class="logo-text">LibraryFlow</span>
+    </div>
+
+    <nav class="main-nav">
+      <a routerLink="/home" class="nav-item" routerLinkActive="active">
+        <span class="material-symbols-outlined">home</span> Início
+      </a>
+      <a routerLink="/relatorios" class="nav-item" routerLinkActive="active">
+        <span class="material-symbols-outlined">bar_chart</span> Relatórios
+      </a>
+      <a routerLink="/configuracoes" class="nav-item" routerLinkActive="active">
+        <span class="material-symbols-outlined">settings</span> Configurações
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a routerLink="/ajuda" class="nav-item">
+        <span class="material-symbols-outlined">help</span> Ajuda
+      </a>
+    </div>
+  </aside>
+
+  <main class="content-area">
+    <header class="header-toolbar">
+      <div class="user-profile">
+        <span>Olá, Ana!</span>
+      </div>
+    </header>
+
+    <section class="page-content">
+      <div class="card profile-main-card">
+        <div class="card-header">
+          <h3 class="card-title">Perfil do Usuário</h3>
+        </div>
+        <div class="card-body">
+          <div class="profile-section">
+            <div class="profile-avatar-container">
+              <div class="profile-avatar-circle">
+                <span class="material-symbols-outlined">person</span>
+              </div>
+            </div>
+            <div class="profile-info">
+              <h4 class="profile-name">Ana Sousa</h4>
+              <p class="profile-role">Administrador(a) do Sistema</p>
+
+              <div class="profile-details-grid">
+                <div class="profile-detail-item">
+                  <span class="material-symbols-outlined">mail</span>
+                  <div>
+                    <span class="detail-label">E-mail Corporativo</span>
+                    <span class="detail-value">
+                      ana.souza@gmail.com
+                      <span class="verified-badge">
+                        <span class="material-symbols-outlined">verified</span>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="profile-detail-item">
+                  <span class="material-symbols-outlined">lock</span>
+                  <div>
+                    <span class="detail-label">Senha</span>
+                    <span class="detail-value password-field">
+                      <span class="password-dots">••••••••</span>
+                      <button class="change-password-btn">Alterar</button>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="profile-detail-item">
+                  <span class="material-symbols-outlined">calendar_today</span>
+                  <div>
+                    <span class="detail-label">Membro desde</span>
+                    <span class="detail-value">Outubro de 2025</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-grid">
+        <div class="card settings-card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <span class="material-symbols-outlined">tune</span>
+              Configurações do Sistema
+            </h3>
+          </div>
+          <div class="card-body">
+            <div class="setting-item">
+              <div class="setting-label">
+                <span class="material-symbols-outlined">restart_alt</span>
+                <div>
+                  <label>Resetar Registros</label>
+                  <p class="setting-description">Limpar todos os dados</p>
+                </div>
+              </div>
+              <button class="reset-button">
+                <span class="material-symbols-outlined">delete_sweep</span>
+                Resetar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card help-card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <span class="material-symbols-outlined">support_agent</span>
+              Ajuda e Suporte
+            </h3>
+          </div>
+          <div class="card-body">
+            <a routerLink="/ajuda" class="help-option">
+              <span class="material-symbols-outlined">help_center</span>
+              <div>
+                <strong>Central de Ajuda</strong>
+                <p>Guias e tutoriais</p>
+              </div>
+              <span class="material-symbols-outlined arrow">arrow_forward</span>
+            </a>
+
+            <a routerLink="/suporte" class="help-option">
+              <span class="material-symbols-outlined">contact_support</span>
+              <div>
+                <strong>Contatar Suporte</strong>
+                <p>Envie uma mensagem</p>
+              </div>
+              <span class="material-symbols-outlined arrow">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="action-button primary">
+          <span class="material-symbols-outlined">save</span>
+          Salvar Alterações
+        </button>
+        <button class="action-button danger-outline">
+          <span class="material-symbols-outlined">delete</span>
+          Excluir Conta
+        </button>
+      </div>
+    </section>
+  </main>
 </div>

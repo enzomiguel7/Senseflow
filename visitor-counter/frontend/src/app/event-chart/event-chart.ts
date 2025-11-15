@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { SensorService } from '../services/sensor.services';
@@ -8,6 +8,9 @@ import { SensorService } from '../services/sensor.services';
   standalone: true,
   imports: [CommonModule, NgApexchartsModule],
   templateUrl: './event-chart.html',
+  styleUrls: ['./event-chart.css'],
+  encapsulation: ViewEncapsulation.None
+
 })
 export class EventChart implements OnInit {
   chartOptions: any;
