@@ -1,17 +1,59 @@
-<div class="container">
-  <div class="sign-in-section">
-    <h1>Login</h1>
-    <p>Bem-vindo! Faça login para continuar.</p>
-    <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required />
-    <input type="password" placeholder="Senha" [(ngModel)]="senha" name="senha" required />
-    <p>{{ message }}</p>
+<div class="registration-container">
 
-    <button class="sign-in-btn" (click)="onLogin()">Entrar</button>
+  <!-- ----------------- LADO ESQUERDO: FORMULÁRIO ----------------- -->
+  <div class="form-side">
+
+      <h1>Inicie seu login</h1>
+
+      <form (ngSubmit)="onLogin()">
+
+          <!-- Email -->
+          <div class="input-group">
+              <label for="email">E-mail</label>
+              <input 
+                  type="email"
+                  id="email"
+                  placeholder="Digite seu e-mail"
+                  [(ngModel)]="email"
+                  name="email"
+                  required
+              >
+          </div>
+
+          <!-- Senha -->
+          <div class="input-group">
+              <label for="senha">Senha</label>
+              <input 
+                  type="password"
+                  id="senha"
+                  placeholder="Insira sua senha"
+                  [(ngModel)]="senha"
+                  name="senha"
+                  required
+              >
+          </div>
+      
+          <!-- Botão -->
+          <button type="submit" class="sign-up-button">
+              Entrar
+          </button>
+
+      </form>
+
+      <!-- Mensagem de retorno (igual no antigo) -->
+      <p>{{ message }}</p>
+
+      <!-- Links -->
+      <p class="login-link">
+          Não possui uma conta?
+          <a (click)="redirectToRegister()" style="cursor: pointer;">Fazer Cadastro</a>
+      </p>
+
   </div>
 
-  <div class="sign-up-section">
-    <h2>Não tem conta?</h2>
-    <p>Registre-se aqui!</p>
-    <button class="sign-up-btn" (click)="redirectToRegister()">Registrar-se</button>
+  <!-- ----------------- LADO DIREITO: ILUSTRAÇÃO ----------------- -->
+  <div class="illustration-side">
+      <img src="assets/imagelogin.png" alt="Ilustração de cadastro e segurança">
   </div>
+
 </div>

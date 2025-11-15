@@ -1,104 +1,181 @@
+/* ...existing code... */
+
+/* ========================= */
+/*        RESET + BASE       */
+/* ========================= */
+
 * {
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: "Arial", sans-serif;
-        background: #eee;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-
-    .container {
-    width: 90%;
-    max-width: 700px; /* Mantém o limite em telas grandes */
-    height: 500px;
-    display: flex;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    margin: auto;
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+html, body {
+    height: 100%;
+}
 
-    .sign-in-section, .sign-up-section {
-        padding: 40px;
-        flex: 1;
-    }
+body {
+    background: #f4f7ff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2vh 2vw;
+}
 
-    .sign-in-section {
-        background: #fff;
-        color: #111;
-        display: flex;
+/* ========================= */
+/*    CONTAINER PRINCIPAL    */
+/* ========================= */
+
+/* Ocupa quase toda a viewport mas limita-se em telas muito grandes */
+.registration-container {
+    width: min(96vw, 1400px);
+    height: min(96vh, 1000px);
+    background: #ffffff;
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+    align-items: stretch;
+}
+
+/* ========================= */
+/*     LADO ESQUERDO FORM    */
+/* ========================= */
+
+.form-side {
+    flex: 1 1 50%;
+    padding: clamp(20px, 4.5vw, 64px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(12px, 1.6vw, 24px);
+    min-width: 320px;
+}
+
+/* Tipografia responsiva */
+h1 {
+    font-size: clamp(22px, 4vw, 40px);
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    margin-bottom: 8px;
+    color: #555;
+    font-size: clamp(14px, 1.6vw, 18px);
+}
+
+/* Inputs */
+.input-group {
+    margin-bottom: clamp(10px, 1.8vw, 20px);
+}
+
+.input-group label {
+    font-size: clamp(13px, 1.4vw, 16px);
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: clamp(10px, 1.6vw, 16px);
+    margin-top: 6px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    transition: 0.2s;
+    font-size: clamp(14px, 1.6vw, 16px);
+}
+
+.input-group input:focus {
+    border-color: #667eea;
+    outline: none;
+}
+
+/* ========================= */
+/*        BOTÃO LOGIN        */
+/* ========================= */
+
+.sign-up-button {
+    width: 100%;
+    padding: clamp(12px, 1.8vw, 18px);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: clamp(16px, 1.8vw, 20px);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sign-up-button:hover {
+    opacity: 0.95;
+}
+
+/* LINK PARA CADASTRO */
+.login-link {
+    margin-top: clamp(12px, 1.4vw, 20px);
+    font-size: clamp(13px, 1.2vw, 16px);
+}
+
+.login-link a {
+    color: #667eea;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* ========================= */
+/*     LADO DIREITO IMG      */
+/* ========================= */
+
+.illustration-side {
+    flex: 1 1 50%;
+    background: #eef1ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(12px, 3vw, 40px);
+    min-width: 320px;
+}
+
+.illustration-side img {
+    width: clamp(220px, 40vw, 700px);
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* ========================= */
+/*   ADAPTAÇÃO PARA MOBILE   */
+/* ========================= */
+
+@media (max-width: 900px) {
+    .registration-container {
         flex-direction: column;
-        justify-content: center;
+        width: 96vw;
+        height: auto;
+        max-height: none;
+        border-radius: 16px;
     }
 
-    .sign-in-section h1 {
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
-
-    .sign-in-section input {
-        display: block;
+    .form-side, .illustration-side {
         width: 100%;
-        margin: 10px 0 20px 0;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
+        padding: clamp(16px, 4vw, 28px);
     }
 
-    .sign-in-btn {
-        background: #0051ff;
-        border: none;
-        padding: 12px 25px;
-        color: white;
-        border-radius: 20px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background 0.3s ease;
+    .illustration-side {
+        order: 2;
+        padding-top: 6vw;
+        padding-bottom: 6vw;
     }
 
-    .sign-in-btn:hover {
-        background: #e03e00;
+    .form-side {
+        order: 1;
     }
+}
 
-    .sign-up-section {
-        background: linear-gradient(45deg, #469bfc, #3f5efb);
-        color: white;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .sign-up-section h2 {
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
-
-    .sign-up-section p {
-        font-weight: 300;
-        margin-bottom: 25px;
-    }
-
-    .sign-up-btn {
-        border: 1px solid white;
-        background: transparent;
-        color: white;
-        padding: 12px 40px;
-        border-radius: 20px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background 0.3s ease;
-    }
-
-    .sign-up-btn:hover {
-        background: rgba(255, 255, 255, 0.2);
-    }
+/* ...existing code... */
