@@ -268,14 +268,14 @@ body {
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.35);
+    box-shadow: 0 4px 15px rgba(118, 75, 162, 0.35);
     margin-top: 12px;
     letter-spacing: 0.5px;
 }
 
 .btn-login:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.45);
+    box-shadow: 0 6px 25px rgba(118, 75, 162, 0.45);
 }
 
 .btn-login:active:not(:disabled) {

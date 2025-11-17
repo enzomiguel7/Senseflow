@@ -12,6 +12,33 @@ import { RouterModule } from '@angular/router';
 })
 export class HomeComponent implements OnInit, AfterViewInit {
   isHeaderScrolled = false;
+  faqItems = [
+    {
+      question: 'O que é o SenseFlow e como funciona?',
+      answer: 'O SenseFlow é uma plataforma de análise de fluxo de pessoas que utiliza sensores inteligentes para monitorar em tempo real a movimentação em espaços físicos. Os dados são processados e apresentados em dashboards intuitivos, permitindo decisões baseadas em dados concretos.',
+      isOpen: false
+    },
+    {
+      question: 'Quais tipos de espaços podem usar o SenseFlow?',
+      answer: 'O SenseFlow é ideal para bibliotecas, museus, centros culturais, espaços corporativos, universidades, shopping centers, eventos e qualquer ambiente que precise entender e otimizar o fluxo de pessoas.',
+      isOpen: false
+    },
+    {
+      question: 'Os dados coletados são seguros e estão em conformidade com a LGPD?',
+      answer: 'Sim, totalmente! Todos os dados são anonimizados e criptografados. Não coletamos informações pessoais identificáveis. Nossa plataforma está em total conformidade com a Lei Geral de Proteção de Dados (LGPD) e melhores práticas de segurança da informação.',
+      isOpen: false
+    },
+    {
+      question: 'Consigo acessar os dados em tempo real?',
+      answer: 'Sim! O dashboard SenseFlow apresenta dados em tempo real, permitindo que você monitore o fluxo de pessoas instantaneamente de qualquer dispositivo com acesso à internet. Você também pode gerar relatórios históricos e análises personalizadas.',
+      isOpen: false
+    },
+    {
+      question: 'O SenseFlow funciona offline?',
+      answer: 'Os sensores precisam de conexão com a internet para enviar dados em tempo real ao dashboard. No entanto, em caso de falha temporária de conexão, os sensores armazenam os dados localmente e sincronizam automaticamente quando a conexão é restabelecida.',
+      isOpen: false
+    }
+  ];
 
   constructor(private elementRef: ElementRef) {}
 
@@ -31,6 +58,35 @@ export class HomeComponent implements OnInit, AfterViewInit {
   onWindowScroll() {
     // Scroll suave para header
     this.isHeaderScrolled = window.pageYOffset > 50;
+    
+    // Atualizar link ativo na navbar
+    this.updateActiveNavLink();
+  }
+
+  updateActiveNavLink() {
+    const sections = ['recursos', 'como-funciona', 'solucoes', 'contato'];
+    const navLinks = this.elementRef.nativeElement.querySelectorAll('.nav-link');
+    
+    let current = '';
+    
+    sections.forEach(sectionId => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const sectionTop = section.offsetTop - 100;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        
+        if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionBottom) {
+          current = sectionId;
+        }
+      }
+    });
+    
+    navLinks.forEach((link: HTMLElement) => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+      }
+    });
   }
 
   setupScrollAnimations() {
@@ -88,5 +144,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     if (dashboardPreview) {
       previewObserver.observe(dashboardPreview);
     }
+  }
+
+  toggleFaq(index: number) {
+    this.faqItems[index].isOpen = !this.faqItems[index].isOpen;
   }
 }

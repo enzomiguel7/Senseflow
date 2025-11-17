@@ -1,0 +1,230 @@
+<div class="saiba-mais-container">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <a routerLink="/home" class="logo">
+        <span class="material-symbols-outlined">bar_chart</span>
+        SenseFlow
+      </a>
+      <nav class="navbar">
+        <a routerLink="/home" class="nav-link">Início</a>
+        <a routerLink="/saiba-mais" class="nav-link active">Saiba Mais</a>
+        <a routerLink="/como-funciona" class="nav-link">Como Funciona</a>
+      </nav>
+      <div class="header-buttons">
+        <a routerLink="/login" class="btn-login">Login</a>
+        <a routerLink="/register" class="btn-cadastro">Cadastrar</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="gradient-text">SenseFlow</span>
+        <span class="subtitle">Monitoramento Inteligente de Visitantes</span>
+      </h1>
+      <p class="hero-description">
+        Uma solução completa de IoT para monitoramento em tempo real do fluxo de pessoas,
+        combinando hardware avançado com análise de dados inteligente.
+      </p>
+    </div>
+  </section>
+
+  <!-- O que é Section -->
+  <section class="what-is-section">
+    <div class="container">
+      <h2 class="section-title">O que é o SenseFlow?</h2>
+      <div class="what-is-content">
+        <div class="what-is-text">
+          <p>
+            O SenseFlow é uma plataforma inovadora de monitoramento de visitantes que utiliza
+            tecnologia IoT (Internet das Coisas) para fornecer dados precisos e em tempo real
+            sobre o fluxo de pessoas em seu estabelecimento.
+          </p>
+          <p>
+            Combinando sensores infravermelhos de alta precisão com uma plataforma web moderna,
+            o SenseFlow permite que você tome decisões informadas baseadas em dados concretos
+            sobre a ocupação e movimentação de visitantes.
+          </p>
+          <p>
+            Nossa solução é ideal para qualquer ambiente que precise monitorar o fluxo de pessoas,
+            desde pequenos estabelecimentos comerciais até grandes complexos corporativos.
+          </p>
+        </div>
+        <div class="what-is-illustration">
+          <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+            <!-- Dashboard Screen -->
+            <rect x="50" y="80" width="300" height="200" rx="12" fill="white" stroke="#667eea" stroke-width="3"/>
+            
+            <!-- Header Bar -->
+            <rect x="50" y="80" width="300" height="40" rx="12" fill="url(#headerGradient)"/>
+            <circle cx="70" cy="100" r="4" fill="white" opacity="0.8"/>
+            <circle cx="82" cy="100" r="4" fill="white" opacity="0.8"/>
+            <circle cx="94" cy="100" r="4" fill="white" opacity="0.8"/>
+            
+            <!-- Chart Area -->
+            <g class="chart-bars">
+              <rect x="80" y="180" width="30" height="60" rx="4" fill="#667eea" opacity="0.7">
+                <animate attributeName="height" values="60;80;60" dur="2s" repeatCount="indefinite"/>
+                <animate attributeName="y" values="180;160;180" dur="2s" repeatCount="indefinite"/>
+              </rect>
+              <rect x="130" y="160" width="30" height="80" rx="4" fill="#764ba2" opacity="0.7">
+                <animate attributeName="height" values="80;100;80" dur="2.5s" repeatCount="indefinite"/>
+                <animate attributeName="y" values="160;140;160" dur="2.5s" repeatCount="indefinite"/>
+              </rect>
+              <rect x="180" y="190" width="30" height="50" rx="4" fill="#667eea" opacity="0.7">
+                <animate attributeName="height" values="50;70;50" dur="2.2s" repeatCount="indefinite"/>
+                <animate attributeName="y" values="190;170;190" dur="2.2s" repeatCount="indefinite"/>
+              </rect>
+              <rect x="230" y="170" width="30" height="70" rx="4" fill="#764ba2" opacity="0.7">
+                <animate attributeName="height" values="70;90;70" dur="2.8s" repeatCount="indefinite"/>
+                <animate attributeName="y" values="170;150;170" dur="2.8s" repeatCount="indefinite"/>
+              </rect>
+              <rect x="280" y="185" width="30" height="55" rx="4" fill="#667eea" opacity="0.7">
+                <animate attributeName="height" values="55;75;55" dur="2.3s" repeatCount="indefinite"/>
+                <animate attributeName="y" values="185;165;185" dur="2.3s" repeatCount="indefinite"/>
+              </rect>
+            </g>
+            
+            <!-- Sensor Device -->
+            <g class="sensor-device">
+              <rect x="140" y="310" width="120" height="60" rx="8" fill="url(#sensorGradient)" stroke="#667eea" stroke-width="2"/>
+              <circle cx="200" cy="340" r="15" fill="white" opacity="0.3"/>
+              <circle cx="200" cy="340" r="8" fill="#2ecc71">
+                <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/>
+              </circle>
+              <rect x="165" y="355" width="70" height="3" rx="1.5" fill="white" opacity="0.5"/>
+              <rect x="175" y="361" width="50" height="3" rx="1.5" fill="white" opacity="0.5"/>
+            </g>
+            
+            <!-- Connection Lines -->
+            <g class="connection-lines">
+              <path d="M 200 310 L 200 280" stroke="#667eea" stroke-width="3" stroke-dasharray="5,5" opacity="0.6">
+                <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1s" repeatCount="indefinite"/>
+              </path>
+              
+              <!-- Data Particles -->
+              <circle cx="200" cy="295" r="3" fill="#667eea">
+                <animate attributeName="cy" values="310;280;280" dur="2s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="200" cy="300" r="3" fill="#764ba2">
+                <animate attributeName="cy" values="310;280;280" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0;1;0" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="200" cy="305" r="3" fill="#667eea">
+                <animate attributeName="cy" values="310;280;280" dur="2s" begin="1s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0;1;0" dur="2s" begin="1s" repeatCount="indefinite"/>
+              </circle>
+            </g>
+            
+            <!-- People Icons -->
+            <g class="people-icons" opacity="0.4">
+              <circle cx="100" cy="340" r="8" fill="#667eea"/>
+              <path d="M 100 348 Q 90 365 85 375 L 115 375 Q 110 365 100 348" fill="#667eea"/>
+              
+              <circle cx="300" cy="340" r="8" fill="#764ba2"/>
+              <path d="M 300 348 Q 290 365 285 375 L 315 375 Q 310 365 300 348" fill="#764ba2"/>
+            </g>
+            
+            <!-- Decorative Dots -->
+            <circle cx="30" cy="150" r="4" fill="#667eea" opacity="0.3">
+              <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="370" cy="200" r="4" fill="#764ba2" opacity="0.3">
+              <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="40" cy="250" r="3" fill="#667eea" opacity="0.3">
+              <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.8s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="360" cy="120" r="3" fill="#764ba2" opacity="0.3">
+              <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3.2s" repeatCount="indefinite"/>
+            </circle>
+            
+            <!-- Gradients -->
+            <defs>
+              <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+              </linearGradient>
+              <linearGradient id="sensorGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.9" />
+                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.9" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="container">
+      <h2 class="section-title">Recursos Principais</h2>
+      <div class="features-grid">
+        <div class="feature-card" *ngFor="let feature of features">
+          <div class="feature-icon">
+            <span class="material-symbols-outlined">{{ feature.icon }}</span>
+          </div>
+          <h3 class="feature-title">{{ feature.title }}</h3>
+          <p class="feature-description">{{ feature.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits-section">
+    <div class="container">
+      <h2 class="section-title">Benefícios para Seu Negócio</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card" *ngFor="let benefit of benefits">
+          <span class="material-symbols-outlined benefit-icon">{{ benefit.icon }}</span>
+          <h3 class="benefit-title">{{ benefit.title }}</h3>
+          <p class="benefit-description">{{ benefit.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases Section -->
+  <section class="use-cases-section">
+    <div class="container">
+      <h2 class="section-title">Casos de Uso</h2>
+      <p class="section-subtitle">
+        O SenseFlow adapta-se a diversos tipos de estabelecimentos e necessidades
+      </p>
+      <div class="use-cases-grid">
+        <div class="use-case-card" *ngFor="let useCase of useCases">
+          <span class="material-symbols-outlined use-case-icon">{{ useCase.icon }}</span>
+          <h3 class="use-case-title">{{ useCase.title }}</h3>
+          <p class="use-case-description">{{ useCase.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="cta-title">Pronto para Começar?</h2>
+      <p class="cta-description">
+        Experimente o SenseFlow e descubra como o monitoramento inteligente pode
+        transformar a gestão do seu estabelecimento.
+      </p>
+      <div class="cta-buttons">
+        <button class="btn btn-primary" routerLink="/register">
+          <span class="material-symbols-outlined">rocket_launch</span>
+          Começar Agora
+        </button>
+        <button class="btn btn-secondary" routerLink="/como-funciona">
+          <span class="material-symbols-outlined">info</span>
+          Como Funciona
+        </button>
+      </div>
+    </div>
+  </section>
+</div>

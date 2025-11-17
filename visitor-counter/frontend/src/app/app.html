@@ -7,4 +7,6 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<router-outlet />
+<div [@routeAnimations]="getRouteAnimationData()" style="position: relative; min-height: 100vh;">
+  <router-outlet />
+</div>

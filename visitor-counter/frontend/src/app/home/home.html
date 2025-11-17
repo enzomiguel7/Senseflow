@@ -2,9 +2,15 @@
 <header class="header" [class.scrolled]="isHeaderScrolled">
     <div class="header-content">
         <a routerLink="/home" class="logo">
-            <span class="material-symbols-outlined">auto_stories</span>
-            LibraryFlow
+            <span class="material-symbols-outlined">bar_chart</span>
+            SenseFlow
         </a>
+        <nav class="navbar">
+            <a href="#recursos" class="nav-link">Recursos</a>
+            <a href="#como-funciona" class="nav-link">Como Funciona</a>
+            <a href="#solucoes" class="nav-link">Soluções</a>
+            <a href="#contato" class="nav-link">Contato</a>
+        </nav>
         <div class="header-buttons">
             <a routerLink="/login" class="btn-login">Login</a>
             <a routerLink="/register" class="btn-cadastro">Cadastrar</a>
@@ -15,46 +21,27 @@
 <!-- HERO SECTION -->
 <section class="hero">
     <div class="hero-content">
-        <h1>Transforme Dados de Fluxo em Decisões Estratégicas</h1>
-        <p>O LibraryFlow mede e analisa o fluxo de pessoas em tempo real, permitindo que você otimize recursos, melhore a experiência e tome decisões baseadas em dados reais.</p>
-        <div class="hero-buttons">
-            <a routerLink="/register" class="btn-primary">Começar Agora</a>
-        </div>
-    </div>
-</section>
-
-<!-- STATS SECTION -->
-<section class="stats">
-    <div class="stats-grid">
-        <div class="stat-card">
-            <div class="stat-icon">
-                <span class="material-symbols-outlined">analytics</span>
+        <div class="hero-text">
+            <div class="hero-badge">
+                <span class="material-symbols-outlined">sensors</span>
+                <span>Monitoramento IoT em Tempo Real</span>
             </div>
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Precisão em Tempo Real</div>
-        </div>
-
-        <div class="stat-card">
-            <div class="stat-icon">
-                <span class="material-symbols-outlined">trending_up</span>
+            <h1>Transforme Dados de Fluxo em Decisões Estratégicas</h1>
+            <p>O SenseFlow mede e analisa o fluxo de pessoas em tempo real, permitindo que você otimize recursos, melhore a experiência e tome decisões baseadas em dados reais.</p>
+            <div class="hero-buttons">
+                <a routerLink="/register" class="btn-primary">Começar Agora</a>
+                <a routerLink="/saiba-mais" class="btn-secondary">Saiba Mais</a>
             </div>
-            <div class="stat-number">65%</div>
-            <div class="stat-label">Aumento de Eficiência</div>
         </div>
-
-        <div class="stat-card">
-            <div class="stat-icon">
-                <span class="material-symbols-outlined">schedule</span>
-            </div>
-            <div class="stat-number">24/7</div>
-            <div class="stat-label">Monitoramento Contínuo</div>
+        <div class="hero-image">
+            <img src="img/hero-sensor.png" alt="Sensor de fluxo detectando pessoas" class="sensor-illustration">
         </div>
     </div>
 </section>
 
 <!-- FEATURES SECTION -->
-<section class="features">
-    <h2 class="section-title">Por que escolher o LibraryFlow?</h2>
+<section id="recursos" class="features">
+    <h2 class="section-title">Por que escolher o SenseFlow?</h2>
     <p class="section-subtitle">Tecnologia avançada de sensores que transforma dados de fluxo em insights acionáveis</p>
     
     <div class="features-grid">
@@ -188,7 +175,7 @@
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="how-it-works">
+<section id="como-funciona" class="how-it-works">
     <h2 class="section-title">Como Funciona</h2>
     <p class="section-subtitle">Quatro passos simples para começar a otimizar seu espaço</p>
 
@@ -217,6 +204,143 @@
             <p>Tome decisões estratégicas baseadas em dados concretos e otimize seus recursos.</p>
         </div>
     </div>
+
+    <div class="how-it-works-cta">
+        <a routerLink="/como-funciona" class="btn-learn-more">
+            Saiba Mais Como Funciona
+            <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="faq-section">
+    <div class="faq-container">
+        <div class="faq-header">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            <p class="section-subtitle">Tire suas dúvidas sobre o SenseFlow e como podemos ajudar na gestão do seu espaço</p>
+        </div>
+
+        <div class="faq-list">
+            <div class="faq-item" *ngFor="let faq of faqItems; let i = index" [class.active]="faq.isOpen">
+                <button class="faq-question" (click)="toggleFaq(i)">
+                    <span class="question-text">{{ faq.question }}</span>
+                    <span class="faq-icon material-symbols-outlined">{{ faq.isOpen ? 'remove' : 'add' }}</span>
+                </button>
+                <div class="faq-answer" [class.show]="faq.isOpen">
+                    <div class="answer-content">
+                        <p>{{ faq.answer }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-cta">
+            <div class="faq-cta-icon">
+                <span class="material-symbols-outlined">support_agent</span>
+            </div>
+            <h3>Ainda tem dúvidas?</h3>
+            <p>Nossa equipe está pronta para ajudar você a encontrar a melhor solução para o seu espaço</p>
+            <div class="faq-cta-buttons">
+                <a href="mailto:contato@senseflow.com.br" class="btn-contact primary">
+                    <span class="material-symbols-outlined">mail</span>
+                    Enviar E-mail
+                </a>
+                <a href="tel:+551140028922" class="btn-contact secondary">
+                    <span class="material-symbols-outlined">call</span>
+                    +55 11 4002-8922
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SOLUTIONS SECTION -->
+<section id="solucoes" class="solutions-section">
+    <div class="solutions-container">
+        <h2 class="section-title">Soluções para Cada Tipo de Negócio</h2>
+        <p class="section-subtitle">O SenseFlow adapta-se perfeitamente às necessidades específicas do seu estabelecimento</p>
+        
+        <div class="solutions-grid">
+            <div class="solution-card">
+                <div class="solution-icon">
+                    <span class="material-symbols-outlined">local_library</span>
+                </div>
+                <h3>Bibliotecas</h3>
+                <p>Monitore a ocupação de salas de estudo e áreas de leitura. Identifique os horários de maior movimento para otimizar o atendimento e a distribuição de recursos.</p>
+                <ul class="solution-benefits">
+                    <li><span class="material-symbols-outlined">check_circle</span> Controle de capacidade</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> Gestão de espaços</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> Relatórios de uso</li>
+                </ul>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-icon">
+                    <span class="material-symbols-outlined">store</span>
+                </div>
+                <h3>Varejo e Comércio</h3>
+                <p>Entenda o fluxo de clientes ao longo do dia. Otimize a escala de funcionários nos horários de pico e melhore a experiência de compra evitando filas.</p>
+                <ul class="solution-benefits">
+                    <li><span class="material-symbols-outlined">check_circle</span> Análise de picos</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> Gestão de equipe</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> Métricas de conversão</li>
+                </ul>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-icon">
+                    <span class="material-symbols-outlined">corporate_fare</span>
+                </div>
+                <h3>Escritórios</h3>
+                <p>Controle a utilização de salas de reunião, espaços de coworking e áreas comuns. Tome decisões baseadas em dados sobre a necessidade de expansão ou reorganização.</p>
+                <ul class="solution-benefits">
+                    <li><span class="material-symbols-outlined">check_circle</span> Uso de salas</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> Otimização de espaço</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> Planejamento estratégico</li>
+                </ul>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-icon">
+                    <span class="material-symbols-outlined">museum</span>
+                </div>
+                <h3>Museus e Centros Culturais</h3>
+                <p>Gerencie a capacidade de visitantes, evite superlotação e melhore a experiência cultural. Analise quais exposições atraem mais público.</p>
+                <ul class="solution-benefits">
+                    <li><span class="material-symbols-outlined">check_circle</span> Controle de visitantes</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> Análise de popularidade</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> Segurança e conforto</li>
+                </ul>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-icon">
+                    <span class="material-symbols-outlined">restaurant</span>
+                </div>
+                <h3>Restaurantes e Cafés</h3>
+                <p>Gerencie filas, tempo de espera e ocupação de mesas. Ofereça uma experiência melhor aos clientes com informações precisas sobre disponibilidade.</p>
+                <ul class="solution-benefits">
+                    <li><span class="material-symbols-outlined">check_circle</span> Gestão de filas</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> Tempo de espera</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> Turnover de mesas</li>
+                </ul>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-icon">
+                    <span class="material-symbols-outlined">fitness_center</span>
+                </div>
+                <h3>Academias</h3>
+                <p>Informe aos alunos os melhores horários para treinar. Evite aglomerações e melhore a experiência com dados em tempo real sobre lotação.</p>
+                <ul class="solution-benefits">
+                    <li><span class="material-symbols-outlined">check_circle</span> Lotação em tempo real</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> Horários ideais</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> Satisfação de alunos</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- CTA SECTION -->
@@ -229,12 +353,12 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
+<footer id="contato" class="footer">
     <div class="footer-content">
 
         <div class="footer-logo">
             <div class="logo">
-                <span class="material-symbols-outlined">auto_stories</span>
+                <span class="material-symbols-outlined">bar_chart</span>
                 SenseFlow
             </div>
             <p>Transformando dados de fluxo em decisões inteligentes</p>

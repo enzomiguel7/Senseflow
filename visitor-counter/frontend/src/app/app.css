@@ -1,0 +1,11 @@
+/* Estilos para transições de rota */
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Garantir que as páginas tenham transição suave */
+router-outlet ~ * {
+  width: 100%;
+}

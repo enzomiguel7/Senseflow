@@ -1,87 +1,119 @@
-<div class="registration-container">
+<div class="register-page">
+    
+    <!-- Left Side - Welcome Section -->
+    <div class="welcome-side">
+        <div class="welcome-content">
+            <div class="logo-area">
+                <span class="material-symbols-outlined logo-icon">bar_chart</span>
+                <span class="logo-text">SenseFlow</span>
+            </div>
+            <h1 class="welcome-title">Comece sua<br>jornada!</h1>
+            <p class="welcome-subtitle">Junte-se a nós e transforme dados em insights</p>
+        </div>
+    </div>
 
-  <!-- Lado Esquerdo -->
-  <div class="form-side">
-      <h1>Crie sua conta</h1>
+    <!-- Right Side - Register Form -->
+    <div class="form-side">
+        <div class="form-container">
+            
+            <!-- Header -->
+            <div class="form-header">
+                <h2>Criar Conta</h2>
+                <p>Preencha seus dados para começar</p>
+            </div>
 
-      <form (ngSubmit)="onRegister()" #form="ngForm">
+            <!-- Register Form -->
+            <form class="register-form" (ngSubmit)="onRegister()" #registerForm="ngForm">
+                
+                <!-- Nome Field -->
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input 
+                        type="text"
+                        id="nome"
+                        class="form-input"
+                        placeholder="Seu nome completo"
+                        [(ngModel)]="nome"
+                        name="nome"
+                        required
+                        minlength="3"
+                    >
+                </div>
 
-          <!-- Nome -->
-          <div class="input-group">
-              <label for="nome">Nome completo</label>
-              <input 
-                  type="text"
-                  id="nome"
-                  placeholder="Digite seu nome"
-                  name="nome"
-                  [(ngModel)]="nome"
-                  required
-              />
-          </div>
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input 
+                        type="email"
+                        id="email"
+                        class="form-input"
+                        placeholder="seu@email.com"
+                        [(ngModel)]="email"
+                        name="email"
+                        required
+                        email
+                    >
+                </div>
 
-          <!-- Email -->
-          <div class="input-group">
-              <label for="email">E-mail</label>
-              <input 
-                  type="email"
-                  id="email"
-                  placeholder="Digite seu e-mail"
-                  name="email"
-                  [(ngModel)]="email"
-                  required
-              />
-          </div>
+                <!-- Password Field -->
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input 
+                        type="password"
+                        id="senha"
+                        class="form-input"
+                        placeholder="Mínimo 6 caracteres"
+                        [(ngModel)]="senha"
+                        name="senha"
+                        required
+                        minlength="6"
+                    >
+                </div>
 
-          <!-- Senha -->
-          <div class="input-group">
-              <label for="senha">Senha</label>
-              <input 
-                  type="password"
-                  id="senha"
-                  placeholder="Crie uma senha"
-                  name="senha"
-                  [(ngModel)]="senha"
-                  required
-              />
-          </div>
+                <!-- Confirm Password Field -->
+                <div class="form-group">
+                    <label for="confirmarSenha">Confirmar Senha</label>
+                    <input 
+                        type="password"
+                        id="confirmarSenha"
+                        class="form-input"
+                        placeholder="Repita sua senha"
+                        [(ngModel)]="confirmarSenha"
+                        name="confirmarSenha"
+                        required
+                    >
+                </div>
 
-          <!-- Confirmar Senha -->
-          <div class="input-group">
-              <label for="confirmarSenha">Confirmar senha</label>
-              <input 
-                  type="password"
-                  id="confirmarSenha"
-                  placeholder="Repita a senha"
-                  name="confirmarSenha"
-                  [(ngModel)]="confirmarSenha"
-                  required
-              />
-          </div>
+                <!-- Terms Checkbox -->
+                <div class="form-options">
+                    <label class="terms-check">
+                        <input type="checkbox" [(ngModel)]="acceptTerms" name="acceptTerms" required>
+                        <span>Aceito os <a href="#" class="terms-link">termos e condições</a></span>
+                    </label>
+                </div>
 
-          <!-- Botão -->
-          <button 
-              type="submit" 
-              class="sign-up-button"
-              [disabled]="form.invalid"
-          >
-              Cadastrar
-          </button>
+                <!-- Register Button -->
+                <button 
+                    type="submit" 
+                    class="btn-register"
+                    [disabled]="registerForm.invalid"
+                >
+                    Criar Conta
+                </button>
 
-      </form>
+                <!-- Alert Message -->
+                <div *ngIf="message" class="alert-message" [class.error]="isError" [class.success]="!isError">
+                    {{ message }}
+                </div>
 
-      <!-- Mensagem de retorno -->
-      <p *ngIf="message" class="message-box">{{ message }}</p>
+                <!-- Login Link -->
+                <div class="login-text">
+                    Já tem uma conta? <a routerLink="/login" class="login-link">Faça login</a>
+                </div>
 
-      <!-- Link login -->
-      <p class="login-link">
-          Já possui uma conta? <a routerLink="/login">Fazer login</a>
-      </p>
+            </form>
 
-  </div>
-
-  <!-- Lado Direito -->
-  <div class="illustration-side">
-      <img src="assets/imagecadastro.png" alt="Ilustração de cadastro">
-  </div>
+        </div>
+    </div>
 
 </div>

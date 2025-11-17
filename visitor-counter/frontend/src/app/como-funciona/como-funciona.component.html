@@ -1,0 +1,173 @@
+<div class="como-funciona-container">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <a routerLink="/home" class="logo">
+        <span class="material-symbols-outlined">bar_chart</span>
+        SenseFlow
+      </a>
+      <nav class="navbar">
+        <a routerLink="/home" class="nav-link">Início</a>
+        <a routerLink="/saiba-mais" class="nav-link">Saiba Mais</a>
+        <a routerLink="/como-funciona" class="nav-link active">Como Funciona</a>
+      </nav>
+      <div class="header-buttons">
+        <a routerLink="/login" class="btn-login">Login</a>
+        <a routerLink="/register" class="btn-cadastro">Cadastrar</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="gradient-text">Como Funciona</span>
+        <span class="subtitle">O SenseFlow em Detalhes</span>
+      </h1>
+      <p class="hero-description">
+        Descubra a tecnologia por trás do sistema de monitoramento inteligente de visitantes.
+        Do sensor à sua tela, cada etapa é projetada para precisão e eficiência.
+      </p>
+    </div>
+  </section>
+
+  <!-- Process Steps Section -->
+  <section class="steps-section">
+    <div class="container">
+      <h2 class="section-title">O Processo Completo</h2>
+      <p class="section-subtitle">
+        Seis etapas que transformam a detecção física em dados acionáveis
+      </p>
+      <div class="steps-timeline">
+        <div class="step-card" *ngFor="let step of steps; let i = index">
+          <div class="step-number">{{ step.number }}</div>
+          <div class="step-content">
+            <div class="step-header">
+              <span class="material-symbols-outlined step-icon">{{ step.icon }}</span>
+              <h3 class="step-title">{{ step.title }}</h3>
+            </div>
+            <p class="step-description">{{ step.description }}</p>
+            <ul class="step-details">
+              <li *ngFor="let detail of step.details">
+                <span class="material-symbols-outlined check-icon">check_circle</span>
+                {{ detail }}
+              </li>
+            </ul>
+          </div>
+          <div class="step-connector" *ngIf="i < steps.length - 1"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture Section -->
+  <section class="architecture-section">
+    <div class="container">
+      <h2 class="section-title">Arquitetura do Sistema</h2>
+      <p class="section-subtitle">
+        Uma arquitetura em camadas para máxima confiabilidade e escalabilidade
+      </p>
+      <div class="architecture-diagram">
+        <div class="layer-card" *ngFor="let layer of architecture.layers">
+          <div class="layer-header">
+            <span class="material-symbols-outlined layer-icon">{{ layer.icon }}</span>
+            <h3 class="layer-name">{{ layer.name }}</h3>
+          </div>
+          <div class="layer-components">
+            <span class="component-tag" *ngFor="let component of layer.components">
+              {{ component }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Data Flow Section -->
+  <section class="dataflow-section">
+    <div class="container">
+      <h2 class="section-title">Fluxo de Dados em Tempo Real</h2>
+      <div class="dataflow-content">
+        <div class="dataflow-diagram">
+          <div class="flow-step">
+            <div class="flow-icon-wrapper">
+              <span class="material-symbols-outlined">sensors</span>
+            </div>
+            <p>Detecção</p>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="flow-icon-wrapper">
+              <span class="material-symbols-outlined">memory</span>
+            </div>
+            <p>Processamento</p>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="flow-icon-wrapper">
+              <span class="material-symbols-outlined">wifi</span>
+            </div>
+            <p>Transmissão</p>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="flow-icon-wrapper">
+              <span class="material-symbols-outlined">storage</span>
+            </div>
+            <p>Armazenamento</p>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="flow-icon-wrapper">
+              <span class="material-symbols-outlined">monitoring</span>
+            </div>
+            <p>Visualização</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Specs Section -->
+  <section class="specs-section">
+    <div class="container">
+      <h2 class="section-title">Especificações Técnicas</h2>
+      <div class="specs-grid">
+        <div class="spec-category" *ngFor="let spec of technicalSpecs">
+          <div class="spec-header">
+            <span class="material-symbols-outlined spec-icon">{{ spec.icon }}</span>
+            <h3 class="spec-title">{{ spec.category }}</h3>
+          </div>
+          <div class="spec-items">
+            <div class="spec-item" *ngFor="let item of spec.items">
+              <span class="spec-label">{{ item.label }}</span>
+              <span class="spec-value">{{ item.value }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="cta-title">Viu Como é Simples?</h2>
+      <p class="cta-description">
+        Tecnologia avançada com implementação descomplicada. Comece a monitorar
+        seu estabelecimento hoje mesmo.
+      </p>
+      <div class="cta-buttons">
+        <button class="btn btn-primary" routerLink="/register">
+          <span class="material-symbols-outlined">rocket_launch</span>
+          Começar Agora
+        </button>
+        <button class="btn btn-secondary" routerLink="/saiba-mais">
+          <span class="material-symbols-outlined">arrow_back</span>
+          Voltar para Saiba Mais
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
