@@ -144,7 +144,7 @@ body {
 
 .header-toolbar {
     display: flex;
-    justify-content: flex-end; 
+    justify-content: space-between; 
     align-items: center;
     padding: 10px 20px;
     background-color: var(--color-card-bg);
@@ -159,6 +159,35 @@ body {
     font-size: 16px;
     font-weight: 500;
     color: var(--color-text-dark);
+}
+
+.logout-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, var(--color-highlight) 0%, var(--color-secondary) 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.logout-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.logout-button:active {
+    transform: translateY(0);
+}
+
+.logout-button .material-symbols-outlined {
+    font-size: 20px;
 }
 
 /*

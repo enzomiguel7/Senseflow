@@ -32,6 +32,11 @@ export class EventChart implements OnInit {
     this.router.navigate(['/charts']);
   }
 
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/home']);
+  }
+
   ngOnInit() {
     this.sensorService.getEvents().subscribe((data: any[]) => {
       const grouped = data.reduce((acc, ev) => {

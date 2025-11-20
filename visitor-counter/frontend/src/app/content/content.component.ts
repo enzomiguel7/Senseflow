@@ -119,7 +119,7 @@ export class ContentComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/home']);
   }
 
   goToEvents() {

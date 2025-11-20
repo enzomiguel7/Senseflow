@@ -37,4 +37,9 @@ export class EventsComponent implements OnInit {
   redirectToSettings() {
     this.router.navigate(['/charts']);
   }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/home']);
+  }
 }
