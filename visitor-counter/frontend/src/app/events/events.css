@@ -29,11 +29,7 @@ body {
     min-height: 100vh;
 }
 
-/*
-=====================================
-  SIDEBAR (BARRA LATERAL)
-=====================================
-*/
+/* SIDEBAR */
 .sidebar {
     width: 18%;
     min-width: 180px;
@@ -128,11 +124,7 @@ body {
     font-size: 20px;
 }
 
-/*
-=====================================
-  CONTEÚDO PRINCIPAL E HEADER
-=====================================
-*/
+/* CONTEÚDO PRINCIPAL E HEADER */
 .content-area {
     flex-grow: 1;
     padding: 20px;
@@ -140,7 +132,6 @@ body {
     flex-direction: column;
     overflow-y: auto;
 }
-
 
 .header-toolbar {
     display: flex;
@@ -190,11 +181,7 @@ body {
     font-size: 20px;
 }
 
-/*
-=====================================
-  CARDS BASE (Para Reuso)
-=====================================
-*/
+/* CARDS BASE */
 .card {
     background: var(--color-card-bg);
     border-radius: 12px;
@@ -218,22 +205,15 @@ body {
     font-weight: 600;
 }
 
-/*
-=====================================
-  ESTILOS ESPECÍFICOS DE RELATÓRIOS
-=====================================
-*/
-
+/* RELATÓRIOS */
 .reports-grid {
     display: grid;
     gap: 20px;
-    /* Layout: 75% (Gráfico) e 25% (Métricas) */
     grid-template-columns: 3fr 1fr; 
     grid-auto-rows: minmax(min-content, max-content);
     flex-grow: 1;
 }
 
-/* CARD PRINCIPAL (Área do Gráfico - Primeira Coluna) */
 .monthly-flow {
     grid-column: 1 / 2;
     padding: 0;
@@ -249,32 +229,59 @@ body {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    height: 380px; /* Altura reservada */
+    height: 380px; /* Altura fixa */
 }
 
-/* Contêiner do Gráfico VAZIO com design de área */
-.chart-container {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 0;
-    border-left: 1px solid var(--color-divider);
-    border-bottom: 1px solid var(--color-divider);
-    position: relative;
-    background-color: #fcfcfc;
+/* TABELA COM SCROLL */
+.table-section {
+    width: 100%;
+    height: 100%; /* Ocupa a altura do card body */
+    overflow-y: auto;
+}
+
+/* Scroll customizado */
+.table-section::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-section::-webkit-scrollbar-thumb {
+    background: #bfc5d8;
     border-radius: 4px;
 }
 
-.chart-axis-labels {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-    color: var(--color-text-medium);
+.table-section::-webkit-scrollbar-thumb:hover {
+    background: #a7aec4;
+}
+
+.visitor-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
     font-size: 14px;
 }
 
-/* Containers de Métricas (Segunda Coluna) */
+.visitor-table thead {
+    background: rgba(0, 0, 0, 0);
+    color: #000000;
+}
+
+.visitor-table th,
+.visitor-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--color-divider);
+    text-align: left;
+}
+
+.visitor-table tbody tr:nth-child(even) {
+    background: #f8f9ff;
+}
+
+.visitor-table tbody tr:hover {
+    background: #eef2ff;
+    cursor: pointer;
+}
+
+/* CONTAINERS DE MÉTRICAS */
 .metric-cards-container {
     grid-column: 2 / 3;
     display: flex;
@@ -284,7 +291,6 @@ body {
 }
 
 .metric-card {
-    /* remove padding para o header encostar nas bordas como o monthly-flow */
     padding: 0;
     text-align: center;
     flex-grow: 1;
@@ -319,57 +325,10 @@ body {
     margin-top: 5px;
 }
 
-.table-section {
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-}
-
-.visitor-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #fff;
-    font-size: 14px;
-}
-
-.visitor-table thead {
-    background: rgba(0, 0, 0, 0);
-    color: #000000;
-}
-
-.visitor-table th,
-.visitor-table td {
-    padding: 12px 15px;
-    border-bottom: 1px solid var(--color-divider);
-    text-align: left;
-}
-
-.visitor-table tbody tr:nth-child(even) {
-    background: #f8f9ff;
-}
-
-.visitor-table tbody tr:hover {
-    background: #eef2ff;
-    cursor: pointer;
-}
-
-.table-section::-webkit-scrollbar {
-    width: 8px;
-}
-
-.table-section::-webkit-scrollbar-thumb {
-    background: #bfc5d8;
-    border-radius: 4px;
-}
-
-.table-section::-webkit-scrollbar-thumb:hover {
-    background: #a7aec4;
-}
-
 /* RESPONSIVIDADE */
 @media (max-width: 1024px) {
     .reports-grid {
-        grid-template-columns: 1fr; /* Passa para coluna única */
+        grid-template-columns: 1fr;
     }
     .monthly-flow, .metric-cards-container {
         grid-column: 1 / -1; 
@@ -413,8 +372,26 @@ body {
     .content-area {
         padding: 10px;
     }
-    /* No mobile, o card de métrica ocupa 100% da largura, pois é o único */
     .metric-cards-container {
         flex-direction: column; 
     }
+}
+
+.chart-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column; /* mudou para coluna */
+    padding: 10px 0;
+    border-left: 1px solid var(--color-divider);
+    border-bottom: 1px solid var(--color-divider);
+    position: relative;
+    background-color: #fcfcfc;
+    border-radius: 4px;
+    overflow: hidden; /* garante que o scroll funcione */
+}
+
+.table-section {
+    width: 100%;
+    flex-grow: 1; /* ocupa todo o espaço do chart-container */
+    overflow-y: auto;
 }
