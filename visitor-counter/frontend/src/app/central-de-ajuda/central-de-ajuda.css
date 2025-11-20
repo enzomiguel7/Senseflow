@@ -1,0 +1,341 @@
+/* Estilos específicos para página de ajuda sem sidebar */
+:host {
+    background-color: #f7fafc;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+.help-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Header fixo */
+.help-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 24px 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.help-header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.help-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: white;
+}
+
+.help-logo .material-symbols-outlined {
+    font-size: 32px;
+}
+
+.help-logo-text {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.back-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateX(-4px);
+}
+
+/* Hero section */
+.help-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 60px 40px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.help-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+}
+
+.help-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.help-hero h1 {
+    font-size: 42px;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.help-hero p {
+    font-size: 18px;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+/* Conteúdo principal */
+.help-content {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Navegação rápida */
+.quick-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 48px;
+}
+
+.quick-nav-card {
+    background: white;
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    color: #2d3748;
+}
+
+.quick-nav-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
+}
+
+.quick-nav-icon {
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.quick-nav-icon .material-symbols-outlined {
+    font-size: 36px;
+    color: white;
+}
+
+.quick-nav-card h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #2d3748;
+}
+
+.quick-nav-card p {
+    font-size: 14px;
+    color: #718096;
+    line-height: 1.5;
+}
+
+/* Seções de conteúdo */
+.help-section {
+    background: white;
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.help-section h2 {
+    font-size: 28px;
+    color: #2d3748;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.help-section h2 .material-symbols-outlined {
+    font-size: 32px;
+    color: #667eea;
+}
+
+.help-section h3 {
+    font-size: 20px;
+    color: #2d3748;
+    margin-top: 28px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.help-section h4 {
+    font-size: 18px;
+    color: #2d3748;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.help-section p {
+    font-size: 16px;
+    color: #2d3748;
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+.help-section ol, .help-section ul {
+    margin: 16px 0;
+    padding-left: 28px;
+}
+
+.help-section li {
+    font-size: 15px;
+    color: #2d3748;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.help-section strong {
+    color: #667eea;
+    font-weight: 600;
+}
+
+/* Caixas de destaque */
+.info-box {
+    background: #f0f9ff;
+    border-left: 4px solid #667eea;
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.warning-box {
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.tip-box {
+    background: #d1fae5;
+    border-left: 4px solid #10b981;
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.info-box p, .warning-box p, .tip-box p {
+    margin: 0;
+    font-size: 15px;
+}
+
+/* Divisor de seção */
+.section-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+    margin: 40px 0;
+}
+
+/* Footer de contato */
+.help-footer {
+    background: white;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    margin-top: 48px;
+}
+
+.help-footer h3 {
+    font-size: 24px;
+    color: #2d3748;
+    margin-bottom: 16px;
+}
+
+.help-footer p {
+    font-size: 16px;
+    color: #718096;
+    margin-bottom: 24px;
+}
+
+.contact-options {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    color: #2d3748;
+}
+
+.contact-item .material-symbols-outlined {
+    color: #667eea;
+    font-size: 24px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .help-header {
+        padding: 16px 20px;
+    }
+
+    .help-hero {
+        padding: 40px 20px;
+    }
+
+    .help-hero h1 {
+        font-size: 32px;
+    }
+
+    .help-content {
+        padding: 20px;
+    }
+
+    .help-section {
+        padding: 24px 20px;
+    }
+
+    .quick-nav {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-options {
+        flex-direction: column;
+        gap: 16px;
+    }
+}

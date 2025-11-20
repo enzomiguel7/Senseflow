@@ -1,0 +1,357 @@
+<!-- Header -->
+<header class="help-header">
+    <div class="help-header-content">
+        <div></div>
+        <a routerLink="/event-chart" class="back-button">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="help-hero">
+    <div class="help-hero-content">
+        <h1>Central de Ajuda</h1>
+        <p>Tudo o que você precisa saber para aproveitar ao máximo o LibraryFlow. Guias detalhados, tutoriais e suporte técnico.</p>
+    </div>
+</section>
+
+<!-- Conteúdo Principal -->
+<div class="help-container">
+    <div class="help-content">
+
+        <!-- Navegação Rápida -->
+        <div class="quick-nav">
+            <a href="#primeiros-passos" class="quick-nav-card">
+                <div class="quick-nav-icon">
+                    <span class="material-symbols-outlined">rocket_launch</span>
+                </div>
+                <h3>Primeiros Passos</h3>
+                <p>Configure e comece a usar o sistema rapidamente</p>
+            </a>
+
+            <a href="#sensores" class="quick-nav-card">
+                <div class="quick-nav-icon">
+                    <span class="material-symbols-outlined">sensors</span>
+                </div>
+                <h3>Gerenciar Sensores</h3>
+                <p>Instalação, configuração e manutenção</p>
+            </a>
+
+            <a href="#relatorios" class="quick-nav-card">
+                <div class="quick-nav-icon">
+                    <span class="material-symbols-outlined">analytics</span>
+                </div>
+                <h3>Relatórios</h3>
+                <p>Gere e analise dados de fluxo</p>
+            </a>
+
+            <a href="#configuracoes" class="quick-nav-card">
+                <div class="quick-nav-icon">
+                    <span class="material-symbols-outlined">settings</span>
+                </div>
+                <h3>Configurações</h3>
+                <p>Personalize o sistema ao seu gosto</p>
+            </a>
+        </div>
+
+        <!-- Seção: Primeiros Passos -->
+        <section id="primeiros-passos" class="help-section">
+            <h2>
+                <span class="material-symbols-outlined">rocket_launch</span>
+                Primeiros Passos
+            </h2>
+
+            <p>Bem-vindo ao LibraryFlow! Este guia vai ajudá-lo a configurar e começar a usar o sistema de contagem de entradas com sensores.</p>
+
+            <h3>1. Visão Geral do Dashboard</h3>
+            <p>O dashboard principal exibe em tempo real o fluxo de pessoas através dos sensores instalados. Você encontrará:</p>
+            <ul>
+                <li><strong>Gráfico de Fluxo:</strong> Visualização em tempo real das entradas registradas</li>
+                <li><strong>Total de Entradas:</strong> Contador diário no canto direito</li>
+                <li><strong>Menu Lateral:</strong> Navegação entre Início, Relatórios e Configurações</li>
+            </ul>
+
+            <div class="tip-box">
+                <p><strong>💡 Dica:</strong> O gráfico é atualizado automaticamente a cada entrada registrada pelos sensores.</p>
+            </div>
+
+            <h3>2. Primeiro Login</h3>
+            <ol>
+                <li>Acesse o sistema com suas credenciais fornecidas pela administração</li>
+                <li>Você será levado ao dashboard principal automaticamente</li>
+                <li>Recomendamos alterar sua senha no primeiro acesso em <strong>Configurações > Perfil</strong></li>
+            </ol>
+
+            <h3>3. Navegando pelo Sistema</h3>
+            <p>Use o menu lateral para acessar as diferentes seções:</p>
+            <ul>
+                <li><strong>Início:</strong> Dashboard com visão geral e dados em tempo real</li>
+                <li><strong>Relatórios:</strong> Análises detalhadas e exportação de dados</li>
+                <li><strong>Configurações:</strong> Gerenciamento de perfil e sistema</li>
+                <li><strong>Ajuda:</strong> Esta central de ajuda</li>
+            </ul>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Seção: Sensores -->
+        <section id="sensores" class="help-section">
+            <h2>
+                <span class="material-symbols-outlined">sensors</span>
+                Gerenciamento de Sensores
+            </h2>
+
+            <h3>Instalação Física do Sensor</h3>
+            <ol>
+                <li><strong>Escolha o Local:</strong> Posicione o sensor na entrada principal, a aproximadamente 2 metros de altura</li>
+                <li><strong>Fixação:</strong> Use os parafusos fornecidos para fixar o suporte na parede ou teto</li>
+                <li><strong>Alimentação:</strong> Conecte o cabo de energia à tomada mais próxima (110V ou 220V)</li>
+                <li><strong>Ângulo:</strong> Ajuste o sensor para cobrir toda a largura da entrada</li>
+            </ol>
+
+            <div class="info-box">
+                <p><strong>ℹ️ Informação:</strong> O sensor tem alcance de até 5 metros e ângulo de detecção de 120 graus.</p>
+            </div>
+
+            <h3>Configuração no Sistema</h3>
+            <ol>
+                <li>Acesse <strong>Configurações > Sistema</strong></li>
+                <li>O sistema detectará automaticamente novos sensores conectados à rede</li>
+                <li>Clique em "Adicionar Sensor" e escolha o dispositivo detectado</li>
+                <li>Dê um nome descritivo (ex: "Entrada Principal", "Portaria Leste")</li>
+                <li>Configure a sensibilidade (Baixa, Média ou Alta)</li>
+                <li>Clique em "Salvar" e teste o funcionamento</li>
+            </ol>
+
+            <h3>Teste de Funcionamento</h3>
+            <p>Após a instalação, realize um teste:</p>
+            <ol>
+                <li>Volte ao dashboard principal</li>
+                <li>Passe pela área de detecção do sensor</li>
+                <li>Verifique se o contador aumenta imediatamente</li>
+                <li>O LED do sensor deve piscar em verde a cada detecção</li>
+            </ol>
+
+            <div class="warning-box">
+                <p><strong>⚠️ Atenção:</strong> Se o sensor não detectar movimento, verifique a conexão de rede e a alimentação elétrica.</p>
+            </div>
+
+            <h3>Manutenção Preventiva</h3>
+            <ul>
+                <li>Limpe a lente do sensor mensalmente com pano seco</li>
+                <li>Verifique os cabos de conexão trimestralmente</li>
+                <li>Atualize o firmware quando notificado pelo sistema</li>
+                <li>Mantenha a área ao redor do sensor livre de obstruções</li>
+            </ul>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Seção: Relatórios -->
+        <section id="relatorios" class="help-section">
+            <h2>
+                <span class="material-symbols-outlined">analytics</span>
+                Trabalhando com Relatórios
+            </h2>
+
+            <h3>Acessando os Relatórios</h3>
+            <p>Clique em <strong>Relatórios</strong> no menu lateral para acessar a página de análises detalhadas.</p>
+
+            <h3>Análise de Fluxo de Pessoas</h3>
+            <p>O gráfico principal mostra o fluxo de entradas ao longo do tempo:</p>
+            <ul>
+                <li><strong>Eixo Horizontal:</strong> Representa o tempo (horas do dia, dias da semana ou meses)</li>
+                <li><strong>Eixo Vertical:</strong> Número de entradas registradas</li>
+                <li><strong>Picos:</strong> Indicam horários ou períodos de maior movimento</li>
+                <li><strong>Vales:</strong> Representam períodos de menor fluxo</li>
+            </ul>
+
+            <h3>Horário de Pico</h3>
+            <p>O card "Horário de Pico" identifica automaticamente o período de maior movimento. Use essa informação para:</p>
+            <ul>
+                <li>Planejar escalas de equipe</li>
+                <li>Organizar recursos durante períodos de alta demanda</li>
+                <li>Analisar padrões de comportamento dos visitantes</li>
+            </ul>
+
+            <h3>Filtros de Período</h3>
+            <p>Você pode analisar diferentes períodos:</p>
+            <ul>
+                <li><strong>Hoje:</strong> Dados do dia atual em tempo real</li>
+                <li><strong>Esta Semana:</strong> Últimos 7 dias</li>
+                <li><strong>Este Mês:</strong> Mês atual completo</li>
+                <li><strong>Personalizado:</strong> Escolha datas específicas de início e fim</li>
+            </ul>
+
+            <h3>Exportando Relatórios</h3>
+            <ol>
+                <li>Na página de Relatórios, selecione o período desejado</li>
+                <li>Clique no botão <strong>"Exportar"</strong> no canto superior direito</li>
+                <li>Escolha o formato:
+                    <ul>
+                        <li><strong>PDF:</strong> Ideal para apresentações e documentação</li>
+                        <li><strong>Excel (XLSX):</strong> Para análises adicionais em planilhas</li>
+                        <li><strong>CSV:</strong> Formato universal para importação em outros sistemas</li>
+                    </ul>
+                </li>
+                <li>O arquivo será baixado automaticamente</li>
+            </ol>
+
+            <div class="tip-box">
+                <p><strong>💡 Dica:</strong> Exporte relatórios semanalmente para manter um histórico organizado e identificar tendências de longo prazo.</p>
+            </div>
+
+            <h3>Interpretando os Dados</h3>
+            <p>Algumas análises úteis que você pode fazer:</p>
+            <ul>
+                <li><strong>Comparação semanal:</strong> Compare semanas para identificar variações sazonais</li>
+                <li><strong>Dias úteis vs. finais de semana:</strong> Analise diferenças no padrão de fluxo</li>
+                <li><strong>Tendências mensais:</strong> Identifique crescimento ou redução ao longo dos meses</li>
+                <li><strong>Impacto de eventos:</strong> Avalie como eventos específicos afetam o fluxo</li>
+            </ul>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Seção: Configurações -->
+        <section id="configuracoes" class="help-section">
+            <h2>
+                <span class="material-symbols-outlined">settings</span>
+                Configurações do Sistema
+            </h2>
+
+            <h3>Gerenciamento de Perfil</h3>
+            <p>Acesse <strong>Configurações</strong> para gerenciar seu perfil de usuário:</p>
+
+            <h4>Informações Pessoais</h4>
+            <ul>
+                <li><strong>Nome:</strong> Seu nome completo exibido no sistema</li>
+                <li><strong>E-mail Corporativo:</strong> E-mail verificado para comunicações</li>
+                <li><strong>Cargo:</strong> Função no sistema (Administrador, Operador, etc.)</li>
+                <li><strong>Data de Cadastro:</strong> Quando sua conta foi criada</li>
+            </ul>
+
+            <h4>Alterar Senha</h4>
+            <ol>
+                <li>Na seção "Perfil do Usuário", localize o campo <strong>Senha</strong></li>
+                <li>Clique no botão <strong>"Alterar"</strong></li>
+                <li>Digite sua senha atual para confirmar</li>
+                <li>Digite a nova senha (mínimo 8 caracteres, incluindo letras e números)</li>
+                <li>Confirme a nova senha digitando novamente</li>
+                <li>Clique em <strong>"Confirmar"</strong></li>
+            </ol>
+
+            <div class="warning-box">
+                <p><strong>⚠️ Segurança:</strong> Use senhas fortes combinando letras maiúsculas, minúsculas, números e caracteres especiais.</p>
+            </div>
+
+            <h3>Configurações do Sistema</h3>
+
+            <h4>Resetar Registros</h4>
+            <p>Use esta função com cuidado para limpar todos os dados de entrada:</p>
+            <ol>
+                <li>Vá para <strong>Configurações > Sistema</strong></li>
+                <li>Clique no botão <strong>"Resetar Registros"</strong></li>
+                <li>Confirme a ação na janela de aviso</li>
+                <li>Todos os dados de contagem serão apagados permanentemente</li>
+            </ol>
+
+            <div class="warning-box">
+                <p><strong>⚠️ Atenção:</strong> Esta ação NÃO pode ser desfeita! Faça backup dos relatórios importantes antes de resetar.</p>
+            </div>
+
+            <h4>Notificações</h4>
+            <p>Ative ou desative notificações em tempo real:</p>
+            <ul>
+                <li><strong>Ativado:</strong> Receba alertas sobre eventos importantes (sensores offline, picos de fluxo, etc.)</li>
+                <li><strong>Desativado:</strong> Modo silencioso, sem notificações</li>
+            </ul>
+
+            <h3>Excluir Conta</h3>
+            <p>Se necessário, você pode solicitar a exclusão da sua conta:</p>
+            <ol>
+                <li>Role até o final da página de Configurações</li>
+                <li>Clique em <strong>"Excluir Conta"</strong></li>
+                <li>Um administrador receberá sua solicitação</li>
+                <li>Você será contatado para confirmar a exclusão</li>
+            </ol>
+
+            <div class="info-box">
+                <p><strong>ℹ️ Nota:</strong> Apenas administradores podem aprovar exclusões de conta para garantir a segurança dos dados.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Seção: Solução de Problemas -->
+        <section class="help-section">
+            <h2>
+                <span class="material-symbols-outlined">build</span>
+                Solução de Problemas Comuns
+            </h2>
+
+            <h3>Sensor não está detectando entradas</h3>
+            <p><strong>Possíveis causas e soluções:</strong></p>
+            <ul>
+                <li><strong>Sem energia:</strong> Verifique se o LED indicador está aceso</li>
+                <li><strong>Desconectado da rede:</strong> Confirme a conexão WiFi ou cabo ethernet</li>
+                <li><strong>Obstrução:</strong> Remova objetos que possam bloquear o campo de visão</li>
+                <li><strong>Calibração:</strong> Acesse Configurações > Sistema e recalibre o sensor</li>
+            </ul>
+
+            <h3>Dashboard não atualiza em tempo real</h3>
+            <p><strong>Soluções:</strong></p>
+            <ul>
+                <li>Atualize a página (F5 ou Ctrl+R)</li>
+                <li>Limpe o cache do navegador</li>
+                <li>Verifique sua conexão com a internet</li>
+                <li>Tente usar outro navegador (recomendamos Chrome ou Firefox)</li>
+            </ul>
+
+            <h3>Não consigo fazer login</h3>
+            <p><strong>Soluções:</strong></p>
+            <ul>
+                <li>Verifique se Caps Lock está desativado</li>
+                <li>Use a opção "Esqueci minha senha" para redefinir</li>
+                <li>Confirme que sua conta está ativa com um administrador</li>
+                <li>Limpe cookies e tente novamente</li>
+            </ul>
+
+            <h3>Relatórios não exportam</h3>
+            <p><strong>Soluções:</strong></p>
+            <ul>
+                <li>Verifique se há dados no período selecionado</li>
+                <li>Tente um período menor de tempo</li>
+                <li>Verifique as permissões de download do navegador</li>
+                <li>Desative bloqueadores de pop-up temporariamente</li>
+            </ul>
+
+            <div class="tip-box">
+                <p><strong>💡 Suporte Técnico:</strong> Se o problema persistir após tentar estas soluções, entre em contato com nossa equipe de suporte.</p>
+            </div>
+        </section>
+
+        <!-- Footer de Contato -->
+        <div class="help-footer">
+            <h3>Ainda Precisa de Ajuda?</h3>
+            <p>Nossa equipe de suporte está pronta para ajudar você com qualquer dúvida ou problema.</p>
+            
+            <div class="contact-options">
+                <div class="contact-item">
+                    <span class="material-symbols-outlined">email</span>
+                    <span>suporte@libraryflow.com</span>
+                </div>
+                <div class="contact-item">
+                    <span class="material-symbols-outlined">phone</span>
+                    <span>0800 123 4567</span>
+                </div>
+                <div class="contact-item">
+                    <span class="material-symbols-outlined">schedule</span>
+                    <span>Seg-Sex, 8h às 18h</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
