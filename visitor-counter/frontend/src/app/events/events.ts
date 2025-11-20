@@ -33,4 +33,8 @@ export class EventsComponent implements OnInit {
   redirectToEvents() {
     this.router.navigate(['/events']);
   }
+
+  redirectToSettings() {
+    this.router.navigate(['/charts']);
+  }
 }

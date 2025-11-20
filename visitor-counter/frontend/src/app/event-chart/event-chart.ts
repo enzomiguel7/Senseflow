@@ -2,6 +2,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { SensorService } from '../services/sensor.services';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-events-chart',
@@ -15,7 +18,19 @@ import { SensorService } from '../services/sensor.services';
 export class EventChart implements OnInit {
   chartOptions: any;
 
-  constructor(private sensorService: SensorService) {}
+  constructor(private sensorService: SensorService, private router: Router) {}
+
+  redirectToContent() {
+    this.router.navigate(['/content']);
+  }
+
+  redirectToEvents() {
+    this.router.navigate(['/events']);
+  }
+
+  redirectToSettings() {
+    this.router.navigate(['/charts']);
+  }
 
   ngOnInit() {
     this.sensorService.getEvents().subscribe((data: any[]) => {

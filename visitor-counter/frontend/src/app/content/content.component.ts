@@ -27,77 +27,106 @@ export class ContentComponent implements OnInit {
   loadChartData() {
     this.sensorService.getEvents().subscribe((data: any[]) => {
       const grouped = data.reduce((acc, ev) => {
-        // Evita entradas faltando dados
         if (!ev || !ev.date_ || !ev.time_) return acc;
 
-        // Parse de date_ suportando "DD/MM/YYYY" e "YYYY-MM-DD"
         let year: number, month: number, day: number;
+
         if (ev.date_.includes('/')) {
           const parts = ev.date_.split('/');
           if (parts.length !== 3) return acc;
           day = parseInt(parts[0], 10);
           month = parseInt(parts[1], 10);
           year = parseInt(parts[2], 10);
+
         } else if (ev.date_.includes('-')) {
           const parts = ev.date_.split('-');
           if (parts.length !== 3) return acc;
           year = parseInt(parts[0], 10);
           month = parseInt(parts[1], 10);
           day = parseInt(parts[2], 10);
-        } else {
-          return acc;
-        }
+        } else return acc;
 
-        // Parse de time_ (HH:mm[:ss])
         const tparts = ev.time_.split(':');
         const hour = parseInt(tparts[0] || '0', 10);
         const minute = parseInt(tparts[1] || '0', 10);
         if (isNaN(year) || isNaN(month) || isNaN(day) || isNaN(hour)) return acc;
 
-        // Cria Date local a partir dos componentes
         const dt = new Date(year, month - 1, day, hour, minute);
         const brasilHour = dt.getHours();
 
         const hourLabel = `${brasilHour.toString().padStart(2, '0')}:00`;
         acc[hourLabel] = (acc[hourLabel] || 0) + 1;
+
         return acc;
       }, {} as Record<string, number>);
 
       const sortedKeys = Object.keys(grouped).sort((a, b) => {
-        const aHour = parseInt(a.split(':')[0], 10);
-        const bHour = parseInt(b.split(':')[0], 10);
-        return aHour - bHour;
+        return parseInt(a) - parseInt(b);
       });
 
-      // Se não houver dados, exibe um fallback para que o gráfico não fique invisível
       if (sortedKeys.length === 0) {
         this.chartOptions = {
           series: [1],
-          chart: { type: 'pie' },
+          chart: {
+            type: 'pie',
+            height: 450
+          },
           labels: ['Sem dados'],
           title: { text: 'Distribuição de Eventos por Horário' },
+          legend: {
+            position: 'right',
+            fontSize: '18px',
+            markers: { width: 16, height: 16 }
+          },
+          dataLabels: {
+            style: { fontSize: '18px', fontWeight: 'bold' }
+          }
         };
         return;
       }
 
       this.chartOptions = {
         series: sortedKeys.map(k => grouped[k]),
-        chart: { type: 'pie' },
+        chart: {
+          type: 'pie',
+          height: 480
+        },
         labels: sortedKeys,
-        title: { text: 'Distribuição de Eventos por Horário' },
+        title: {
+          text: 'Distribuição de Eventos por Horário'
+        },
+        legend: {
+          position: 'right',
+          fontSize: '18px',
+          markers: {
+            width: 16,
+            height: 16
+          },
+          itemMargin: {
+            horizontal: 12,
+            vertical: 12
+          }
+        },
+        dataLabels: {
+          style: {
+            fontSize: '18px',
+            fontWeight: 'bold'
+          }
+        }
       };
     });
   }
 
   logout() {
     localStorage.removeItem('token');
-    console.log('Logout efetuado');
     this.router.navigate(['/login']);
   }
 
   goToEvents() {
     this.router.navigate(['/events']);
   }
+
+    redirectToSettings() {
+    this.router.navigate(['/charts']);
+  }
 }
-
-
