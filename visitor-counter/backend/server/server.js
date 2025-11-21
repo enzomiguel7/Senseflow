@@ -8,30 +8,26 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// conexão MySQL
+// Conexão MySQL
 const db = mysql.createConnection({
   host: 'localhost',
-  user: 'root',      // ajuste se seu MySQL tiver outro usuário
-  password: '0000',      // coloque sua senha do MySQL
+  user: 'root',
+  password: '0000',
   database: 'Usuarios'
 });
 
-// rota de cadastro
+// Cadastro de usuário
 app.post('/register', (req, res) => {
   const { username, email, password } = req.body;
   const hash = bcrypt.hashSync(password, 10);
 
-  db.query(
-    'INSERT INTO Users (Username, Email, PasswordHash) VALUES (?, ?, ?)',
+  db.query('INSERT INTO Users (Username, Email, PasswordHash) VALUES (?, ?, ?)',
     [username, email, hash],
-    (err) => {
-      if (err) return res.status(500).json({ error: 'Erro ao cadastrar usuário' });
-      res.json({ message: 'Usuário cadastrado com sucesso!' });
-    }
+    (err) => err ? res.status(500).json({ error: 'Erro ao cadastrar usuário' }) : res.json({ message: 'Usuário cadastrado com sucesso!' })
   );
 });
 
-// rota de login
+// Login
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
 
@@ -39,11 +35,26 @@ app.post('/login', (req, res) => {
     if (err || results.length === 0) return res.status(400).json({ error: 'Usuário não encontrado' });
 
     const user = results[0];
-    const valid = bcrypt.compareSync(password, user.PasswordHash);
-    if (!valid) return res.status(400).json({ error: 'Senha inválida' });
+    if (!bcrypt.compareSync(password, user.PasswordHash)) return res.status(400).json({ error: 'Senha inválida' });
 
     const token = jwt.sign({ id: user.id }, 'segredo123', { expiresIn: '1h' });
     res.json({ token });
+  });
+});
+
+// 🔥 Deletar conta de usuário
+app.delete('/delete-account/:id', (req, res) => {
+  const { id } = req.params;
+
+  db.query('DELETE FROM Users WHERE id = ?', [id], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ message: 'Erro ao excluir a conta.' });
+    }
+
+    if (result.affectedRows === 0) return res.status(404).json({ message: 'Usuário não encontrado.' });
+
+    res.json({ message: 'Conta excluída com sucesso!' });
   });
 });
 
