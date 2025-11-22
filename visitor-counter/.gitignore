@@ -29,16 +29,16 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
 .sass-cache/
 /connect.lock
 /coverage
 /libpeerconnection.log
 testem.log
 /typings
-.angular/cache/
 *.tsbuildinfo
 
+# Angular cache (correto!)
+frontend/.angular/
 
 # System files
 .DS_Store
