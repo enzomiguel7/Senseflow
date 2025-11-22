@@ -185,11 +185,6 @@ logout() {
       return;
     }
 
-    if (this.newPassword.length < 8) {
-      alert('A nova senha deve ter no mínimo 8 caracteres.');
-      return;
-    }
-
     if (this.newPassword !== this.confirmPassword) {
       alert('As senhas não coincidem.');
       return;
