@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent {
   isError = false;
   rememberMe = false;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private userService: UserService) {}
 
   onLogin() {
     if (!this.email || !this.senha) {
@@ -31,7 +32,12 @@ export class LoginComponent {
       password: this.senha
     }).subscribe({
       next: (res) => {
+        // ✅ CORREÇÃO: Salvar o token PRIMEIRO.
         localStorage.setItem('token', res.token);
+        
+        // ✅ CHAMA a busca AGORA que o token está garantido no localStorage.
+        this.userService.loadUserDetailsIfEmpty(); 
+        
         this.showMessage('Login realizado com sucesso!', false);
         setTimeout(() => this.router.navigate(['/content']), 1000);
       },

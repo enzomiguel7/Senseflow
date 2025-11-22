@@ -18,34 +18,41 @@ const db = mysql.createConnection({
 
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
+  
+  // 💡 CORREÇÃO CRÍTICA: deve ser split(' ') com espaço
+  const token = authHeader && authHeader.split(' ')[1]; 
 
   if (token == null) return res.sendStatus(401);
 
   jwt.verify(token, 'segredo123', (err, user) => {
-    if (err) return res.sendStatus(403)
-    req.user = user
+    if (err) return res.sendStatus(403);
+    req.user = user;
     next();
-  })
-}
+  });
+};
 
 app.get('/user-details', authenticateToken, (req, res) => {
   const userId = req.user.id;
 
   db.query(
-    'SELECT Username, Email FROM Users WHERE id = ?',
+    'SELECT Username, Email FROM Users WHERE id = ?', // Vírgula no lugar certo
     [userId],
     (err, results) => {
-      if (err || results.length === 0){
-        return res.sendStatus(404).json({error: 'Detalhes do usuário não encontrados'})
+      if (err) {
+          console.error("Erro no BD ao buscar usuário:", err);
+          return res.status(500).json({ error: 'Erro interno do servidor' });
+      }
+      
+      if (results.length === 0) {
+        return res.status(404).json({ error: 'Detalhes do usuário não encontrados' }); 
       }
 
-      const userDetails = results[0]
-
-      res.json(userDetails);
+      const userDetails = results[0];
+      res.json(userDetails); 
     }
-  )
-} )
+  );
+});
+
 
 // Cadastro de usuário
 app.post('/register', (req, res) => {

@@ -1,7 +1,7 @@
-// src/app/services/user.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, BehaviorSubject, tap } from 'rxjs'; // Importar BehaviorSubject e tap
+import { Observable, BehaviorSubject, tap, of, throwError } from 'rxjs'; // Adicionado 'of' e 'throwError'
+import { catchError } from 'rxjs/operators'; // Para lidar com erros de forma limpa
 
 export interface UserDetails {
   Username: string;
@@ -14,38 +14,53 @@ export interface UserDetails {
 export class UserService {
   private apiUrl = 'http://localhost:4000';
 
-  // 1. BehaviorSubject para armazenar e emitir o estado atual do usuário
-  // Inicializamos com um objeto vazio ou null até que os dados sejam carregados.
   private userSource = new BehaviorSubject<UserDetails | null>(null);
-  
-  // 2. Observable público para os componentes se inscreverem
   public userDetails$ = this.userSource.asObservable(); 
 
   constructor(private http: HttpClient) { }
 
-  fetchUserDetails(): Observable<UserDetails> {
+  fetchUserDetails(): Observable<UserDetails | null> {
     const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
+    
+    // 💡 CORREÇÃO 1: Se não houver token, retorna um Observable que emite null.
+    // Isso impede o envio de uma requisição HTTP inválida.
+    if (!token) {
+        console.warn('Token JWT não encontrado. Não foi possível buscar detalhes do usuário.');
+        return of(null);
+    }
+
+    const headers = new HttpHeaders({ 
+        'Authorization': `Bearer ${token}` 
+    });
 
     return this.http.get<UserDetails>(`${this.apiUrl}/user-details`, { headers }).pipe(
-      // 3. Ao receber os dados do backend, armazena-os no BehaviorSubject
       tap(data => {
+        // Se a requisição for bem-sucedida, armazena no Subject
         this.userSource.next(data);
+      }),
+      // Captura o erro 403/401 e limpa o token (assume que o token expirou)
+      catchError(error => {
+        if (error.status === 401 || error.status === 403) {
+          console.error('Sessão expirada ou token inválido. Limpando token local.');
+          this.clearUser();
+          localStorage.removeItem('token');
+          // Você pode forçar um redirecionamento aqui, se quiser
+        }
+        return throwError(() => error); // Propaga o erro para ser tratado no loadUserDetailsIfEmpty
       })
     );
   }
 
-  // Novo método para buscar os dados apenas se ainda não tivermos
   loadUserDetailsIfEmpty() {
-    // Verifica se os dados já foram carregados (se o valor não for null)
-    if (!this.userSource.getValue()) {
-      this.fetchUserDetails().subscribe({
-        error: (err) => console.error('Falha ao carregar detalhes do usuário:', err)
-      });
+    // Garante que o fetchUserDetails seja chamado apenas se não houver dados
+    // e o token estiver presente para tentar a busca.
+    if (this.userSource.getValue() === null && localStorage.getItem('token')) {
+        this.fetchUserDetails().subscribe({
+            error: (err) => console.error('Falha ao carregar detalhes do usuário:', err)
+        });
     }
   }
 
-  // Opcional: Limpar dados ao deslogar
   clearUser() {
     this.userSource.next(null);
   }
