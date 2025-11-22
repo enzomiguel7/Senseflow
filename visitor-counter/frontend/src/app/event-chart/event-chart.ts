@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { SensorService } from '../services/sensor.services';
 import { Router } from '@angular/router';
@@ -12,13 +13,20 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-events-chart',
   standalone: true,
-  imports: [CommonModule, NgApexchartsModule],
+  imports: [CommonModule, NgApexchartsModule, FormsModule],
   templateUrl: './event-chart.html',
   styleUrls: ['./event-chart.css'],
   encapsulation: ViewEncapsulation.None
 })
 export class EventChart implements OnInit {
   chartOptions: any;
+  userDetails$!: Observable<UserDetails | null>;
+  
+  // Controle do modal de senha
+  showPasswordModal = false;
+  currentPassword = '';
+  newPassword = '';
+  confirmPassword = '';
 
   constructor(
     private sensorService: SensorService, 
@@ -27,7 +35,6 @@ export class EventChart implements OnInit {
     private userService: UserService
 
   ) {}
-  userDetails$!: Observable<UserDetails | null>;
 
 
 
@@ -154,5 +161,65 @@ logout() {
         }
       });
     }
+  }
+
+  // 🔑 Funções do Modal de Alteração de Senha
+  openPasswordModal() {
+    this.showPasswordModal = true;
+    this.currentPassword = '';
+    this.newPassword = '';
+    this.confirmPassword = '';
+  }
+
+  closePasswordModal() {
+    this.showPasswordModal = false;
+    this.currentPassword = '';
+    this.newPassword = '';
+    this.confirmPassword = '';
+  }
+
+  confirmPasswordChange() {
+    // Validações
+    if (!this.currentPassword || !this.newPassword || !this.confirmPassword) {
+      alert('Por favor, preencha todos os campos.');
+      return;
+    }
+
+    if (this.newPassword.length < 8) {
+      alert('A nova senha deve ter no mínimo 8 caracteres.');
+      return;
+    }
+
+    if (this.newPassword !== this.confirmPassword) {
+      alert('As senhas não coincidem.');
+      return;
+    }
+
+    // Requisição para o servidor
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert('Você precisa estar logado.');
+      return;
+    }
+
+    const userId = this.getUserIdFromToken(token);
+    if (!userId) {
+      alert('Erro ao identificar usuário.');
+      return;
+    }
+
+    this.http.put(`http://localhost:4000/change-password/${userId}`, {
+      currentPassword: this.currentPassword,
+      newPassword: this.newPassword
+    }).subscribe({
+      next: () => {
+        alert('Senha alterada com sucesso!');
+        this.closePasswordModal();
+      },
+      error: (err) => {
+        console.error(err);
+        alert(err.error?.message || 'Não foi possível alterar a senha. Verifique a senha atual.');
+      }
+    });
   }
 }

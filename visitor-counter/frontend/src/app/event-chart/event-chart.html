@@ -74,7 +74,7 @@
                     <span class="detail-label">Senha</span>
                     <span class="detail-value password-field">
                       <span class="password-dots">••••••••</span>
-                      <button class="change-password-btn">Alterar</button>
+                      <button class="change-password-btn" (click)="openPasswordModal()">Alterar</button>
                     </span>
                   </div>
                 </div>
@@ -82,6 +82,36 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Modal de Alteração de Senha -->
+      <div class="modal-overlay" *ngIf="showPasswordModal" [class.active]="showPasswordModal" (click)="closePasswordModal()"></div>
+      <div class="password-modal" *ngIf="showPasswordModal" [class.active]="showPasswordModal">
+        <div class="modal-header">
+          <h3>Alterar Senha</h3>
+          <button class="modal-close" (click)="closePasswordModal()">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="current-password">Senha Atual</label>
+            <input type="password" id="current-password" [(ngModel)]="currentPassword" placeholder="Digite sua senha atual" required>
+          </div>
+          <div class="form-group">
+            <label for="new-password">Nova Senha</label>
+            <input type="password" id="new-password" [(ngModel)]="newPassword" placeholder="Digite a nova senha" required>
+            <small>Mínimo 8 caracteres, incluindo letras e números</small>
+          </div>
+          <div class="form-group">
+            <label for="confirm-password">Confirmar Nova Senha</label>
+            <input type="password" id="confirm-password" [(ngModel)]="confirmPassword" placeholder="Confirme a nova senha" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="modal-button cancel" (click)="closePasswordModal()">Cancelar</button>
+          <button class="modal-button confirm" (click)="confirmPasswordChange()">Confirmar</button>
         </div>
       </div>
 
