@@ -1,6 +1,3 @@
-<!-- Angular-compatible template version of your page -->
-<!-- Use this as the template of a component: configuracoes.component.html -->
-
 <div class="dashboard-container">
   <aside class="sidebar">
     <div class="logo-area">
@@ -32,7 +29,7 @@
   <main class="content-area">
     <header class="header-toolbar">
       <div class="user-profile">
-        <span>Olá, Ana!</span>
+        <span *ngIf="userDetails$ | async as user">Olá, {{user.Username}}!</span>
       </div>
       <button class="logout-button" (click)="logout()">
         <span class="material-symbols-outlined">logout</span>
@@ -52,8 +49,9 @@
                 <span class="material-symbols-outlined">person</span>
               </div>
             </div>
-            <div class="profile-info">
-              <h4 class="profile-name">Ana Sousa</h4>
+            
+            <div class="profile-info" *ngIf="userDetails$ | async as user">
+              <h4 class="profile-name">{{user.Username}}</h4>
               <p class="profile-role">Administrador(a) do Sistema</p>
 
               <div class="profile-details-grid">
@@ -62,7 +60,7 @@
                   <div>
                     <span class="detail-label">E-mail Corporativo</span>
                     <span class="detail-value">
-                      ana.souza@gmail.com
+                      {{user.Email}}
                       <span class="verified-badge">
                         <span class="material-symbols-outlined">verified</span>
                       </span>
@@ -81,13 +79,6 @@
                   </div>
                 </div>
 
-                <div class="profile-detail-item">
-                  <span class="material-symbols-outlined">calendar_today</span>
-                  <div>
-                    <span class="detail-label">Membro desde</span>
-                    <span class="detail-value">Outubro de 2025</span>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { SensorService } from '../services/sensor.services';
+import { UserDetails, UserService } from '../services/user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-content',
@@ -14,14 +16,19 @@ import { SensorService } from '../services/sensor.services';
 })
 export class ContentComponent implements OnInit {
   chartOptions: any = null;
+  userDetails$!: Observable<UserDetails | null>;
 
   constructor(
     private router: Router,
-    private sensorService: SensorService
+    private sensorService: SensorService,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
     this.loadChartData();
+
+    this.userDetails$ = this.userService.userDetails$;
+
   }
 
   loadChartData() {
@@ -121,6 +128,7 @@ export class ContentComponent implements OnInit {
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['/home']);
+    this.userService.clearUser();
   }
 
   goToEvents() {

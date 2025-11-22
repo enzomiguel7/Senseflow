@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { SensorService } from '../services/sensor.services';
 import { Router } from '@angular/router';
+import { UserDetails, UserService } from '../services/user.service';
+import { Observable } from 'rxjs';
 
 
 
@@ -18,7 +20,13 @@ import { Router } from '@angular/router';
 export class EventChart implements OnInit {
   chartOptions: any;
 
-  constructor(private sensorService: SensorService, private router: Router) {}
+  userDetails$!: Observable<UserDetails | null>;
+
+  constructor(
+    private sensorService: SensorService,
+    private router: Router,
+    private userService: UserService
+    ) {}
 
   redirectToContent() {
     this.router.navigate(['/content']);
@@ -32,12 +40,17 @@ export class EventChart implements OnInit {
     this.router.navigate(['/charts']);
   }
 
-  logout() {
+  
+logout() {
+    this.userService.clearUser(); // Limpa o estado
     localStorage.removeItem('token');
     this.router.navigate(['/home']);
   }
 
   ngOnInit() {
+
+    this.userDetails$ = this.userService.userDetails$;
+
     this.sensorService.getEvents().subscribe((data: any[]) => {
       const grouped = data.reduce((acc, ev) => {
         // Evita entradas faltando dados

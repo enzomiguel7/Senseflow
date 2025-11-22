@@ -32,7 +32,7 @@
 
         <header class="header-toolbar">
             <div class="user-profile">
-                <span>Olá, Ana!</span>
+               <span *ngIf="userDetails$ | async as user">Olá, {{user.Username}}!</span>
             </div>
             <button class="logout-button" (click)="logout()">
                 <span class="material-symbols-outlined">logout</span>
