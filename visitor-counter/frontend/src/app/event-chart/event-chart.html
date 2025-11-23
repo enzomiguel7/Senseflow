@@ -10,7 +10,7 @@
           <span class="material-symbols-outlined">home</span> Início
         </button>
 
-        <button class="nav-item" [class.active]="active==='reports'" (click)="active='reports'; redirectToContent()">
+        <button class="nav-item" [class.active]="active==='reports'" (click)="active='reports'; redirectToEvents()">
           <span class="material-symbols-outlined">bar_chart</span> Relatórios
         </button>
 
@@ -23,7 +23,7 @@
   <main class="content-area">
     <header class="header-toolbar">
       <div class="user-profile">
-        <span *ngIf="userDetails$ | async as user">Olá, {{user.Username}}!</span>
+        <span *ngIf="(userDetails$ | async) as user">Olá, {{user.Username}}!</span>
       </div>
       <button class="logout-button" (click)="logout()">
         <span class="material-symbols-outlined">logout</span>
@@ -44,7 +44,7 @@
               </div>
             </div>
             
-            <div class="profile-info" *ngIf="userDetails$ | async as user">
+            <div class="profile-info" *ngIf="(userDetails$ | async) as user">
               <h4 class="profile-name">{{user.Username}}</h4>
               <p class="profile-role">Administrador(a) do Sistema</p>
 

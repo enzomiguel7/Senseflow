@@ -32,7 +32,7 @@ body {
 /* SIDEBAR */
 .sidebar {
     width: 18%;
-    min-width: 180px;
+    min-width: 245px;
     max-width: 250px;
     background: var(--color-dark-bg);
     box-shadow: 2px 0 15px rgba(0, 0, 0, 0.08);
@@ -67,14 +67,15 @@ body {
 .logo-area {
     display: flex;
     align-items: center;
-    padding: 0 16px 20px 16px;
-    margin-bottom: 30px; 
+    padding: 0px 16px 20px;
+    margin: 0px 0px 30px;
 }
 
-.logo-icon {
-    font-size: 30px;
+.logo-image {
+    width: 36px;
+    height: 36px;
     margin-right: 8px;
-    color: var(--color-highlight);
+    object-fit: contain;
 }
 
 .logo-text {
