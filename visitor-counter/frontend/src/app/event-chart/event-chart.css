@@ -44,7 +44,7 @@ body {
 */
 .sidebar {
     width: 18%;
-    min-width: 180px;
+    min-width: 245px;
     max-width: 250px;
     background: var(--color-dark-bg);
     box-shadow: 2px 0 15px rgba(0, 0, 0, 0.08);

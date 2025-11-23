@@ -51,6 +51,10 @@ export class EventChart implements OnInit {
     this.router.navigate(['/charts']);
   }
 
+  redirectToHelp() {
+    this.router.navigate(['/central-de-ajuda']);
+  }
+
   
 logout() {
     this.userService.clearUser(); // Limpa o estado
