@@ -121,6 +121,13 @@ body {
     color: var(--color-highlight);
 }
 
+.nav-item.active {
+    background: linear-gradient(135deg, var(--color-highlight) 0%, var(--color-secondary) 100%);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
 .nav-item .material-symbols-outlined {
     margin-right: 10px;
     font-size: 20px;

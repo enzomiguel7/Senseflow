@@ -21,6 +21,7 @@ import { Observable } from 'rxjs';
 export class EventChart implements OnInit {
   chartOptions: any;
   userDetails$!: Observable<UserDetails | null>;
+  active: string = 'settings';
   
   // Controle do modal de senha
   showPasswordModal = false;

@@ -6,16 +6,16 @@
     </div>
 
        <nav class="main-nav">
-        <button class="nav-item" (click)="redirectToContent()">
-            <span class="material-symbols-outlined">home</span> Início
+        <button class="nav-item" [class.active]="active==='home'" (click)="active='home'; redirectToContent()">
+          <span class="material-symbols-outlined">home</span> Início
         </button>
 
-        <button class="nav-item" (click)="redirectToContent()">
-            <span class="material-symbols-outlined">bar_chart</span> Relatórios
+        <button class="nav-item" [class.active]="active==='reports'" (click)="active='reports'; redirectToContent()">
+          <span class="material-symbols-outlined">bar_chart</span> Relatórios
         </button>
 
-        <button class="nav-item active" (click)="redirectToSettings()">
-            <span class="material-symbols-outlined">settings</span> Configurações
+        <button class="nav-item" [class.active]="active==='settings'" (click)="active='settings'; redirectToSettings()">
+          <span class="material-symbols-outlined">settings</span> Configurações
         </button>
     </nav>
   </aside>
