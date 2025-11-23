@@ -72,30 +72,27 @@ body {
     margin: 0 6px 20px 6px;
 }
 
-.sidebar-footer .nav-item {
-    color: var(--color-text-medium);
-}
+    .logo-area {
+        display: flex;
+        align-items: center;
+        padding: 0px 16px 20px;
+        margin: 0px 0px 30px;
+    }
 
-.logo-area {
-    display: flex;
-    align-items: center;
-    padding: 0 16px 20px 16px;
-    margin-bottom: 30px;
-}
+    .logo-image {
+        width: 36px;
+        height: 36px;
+        margin-right: 8px;
+        object-fit: contain;
+    }
 
-.logo-icon {
-    font-size: 30px;
-    margin-right: 8px;
-    color: var(--color-highlight);
-}
+    .logo-text {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--color-text-dark);
+    }
 
-.logo-text {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--color-text-dark);
-}
-
-.main-nav {
+    .main-nav {
     padding: 0 10px;
     flex-grow: 1;
     display: flex;
@@ -122,13 +119,6 @@ body {
 .nav-item:hover {
     background-color: rgba(102, 126, 234, 0.05);
     color: var(--color-highlight);
-}
-
-.nav-item.active {
-    background: linear-gradient(135deg, var(--color-highlight) 0%, var(--color-secondary) 100%);
-    color: white;
-    font-weight: 600;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
 .nav-item .material-symbols-outlined {
