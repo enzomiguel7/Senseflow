@@ -9,6 +9,7 @@ import { AuthGuard } from './auth-guard';
 import { SaibaMaisComponent } from './saiba-mais/saiba-mais.component';
 import { ComoFuncionaComponent } from './como-funciona/como-funciona.component';
 import { CentralDeAjuda } from './central-de-ajuda/central-de-ajuda';
+import { TermosComponent } from './termos-condicoes/termos.component';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,4 +23,5 @@ export const appRoutes: Routes = [
   { path: 'charts', component: EventChart, canActivate:[AuthGuard]},
   { path: 'event-chart', component: EventChart, canActivate:[AuthGuard]},
   { path: 'central-de-ajuda', component: CentralDeAjuda, canActivate:[AuthGuard]},
+  { path: 'termos-condicoes', component: TermosComponent},
 ];
