@@ -34,9 +34,7 @@ body {
 =====================================
 */
 .sidebar {
-    width: 18%;
-    min-width: 180px;
-    max-width: 250px;
+    flex: 0 0 245px;
     background: var(--color-dark-bg);
     box-shadow: 2px 0 15px rgba(0, 0, 0, 0.08);
     display: flex;
