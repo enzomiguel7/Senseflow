@@ -74,23 +74,7 @@ export class ContentComponent implements OnInit {
       });
 
       if (sortedKeys.length === 0) {
-        this.chartOptions = {
-          series: [1],
-          chart: {
-            type: 'pie',
-            height: 450
-          },
-          labels: ['Sem dados'],
-          title: { text: 'Distribuição de Eventos por Horário' },
-          legend: {
-            position: 'right',
-            fontSize: '18px',
-            markers: { width: 16, height: 16 }
-          },
-          dataLabels: {
-            style: { fontSize: '18px', fontWeight: 'bold' }
-          }
-        };
+        this.chartOptions = null;
         return;
       }
 
