@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserDetails, UserService } from '../services/user.service';
 import { Observable } from 'rxjs';
+import { ThemeService } from '../services/theme.service';
 
 
 
@@ -22,6 +23,7 @@ export class EventChart implements OnInit {
   chartOptions: any;
   userDetails$!: Observable<UserDetails | null>;
   active: string = 'settings';
+  darkMode$!: Observable<boolean>;
   
   // Controle do modal de senha
   showPasswordModal = false;
@@ -33,8 +35,8 @@ export class EventChart implements OnInit {
     private sensorService: SensorService, 
     private router: Router,
     private http: HttpClient,
-    private userService: UserService
-
+    private userService: UserService,
+    private themeService: ThemeService
   ) {}
 
 
@@ -110,6 +112,7 @@ logout() {
   ngOnInit() {
 
     this.userDetails$ = this.userService.userDetails$;
+    this.darkMode$ = this.themeService.darkMode$;
 
     this.sensorService.getEvents().subscribe((data: any[]) => {
       const grouped = data.reduce((acc, ev) => {
@@ -225,5 +228,9 @@ logout() {
         alert(err.error?.message || 'Não foi possível alterar a senha. Verifique a senha atual.');
       }
     });
+  }
+
+  toggleDarkMode() {
+    this.themeService.toggleTheme();
   }
 }

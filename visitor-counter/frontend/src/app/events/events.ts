@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { UserDetails, UserService } from '../services/user.service';
 import { Observable } from 'rxjs';
+import { ThemeService } from '../services/theme.service';
 
 
 @Component({
@@ -22,7 +23,12 @@ export class EventsComponent implements OnInit {
     userDetails$!: Observable<UserDetails | null>;
   
 
-  constructor(private sensorService: SensorService, private router: Router, private userService: UserService) {}
+  constructor(
+    private sensorService: SensorService, 
+    private router: Router, 
+    private userService: UserService,
+    private themeService: ThemeService
+  ) {}
 
   ngOnInit() {
 

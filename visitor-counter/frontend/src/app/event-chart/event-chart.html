@@ -130,6 +130,20 @@
                 Resetar
               </button>
             </div>
+
+            <div class="setting-item">
+              <div class="setting-label">
+                <span class="material-symbols-outlined">dark_mode</span>
+                <div>
+                  <label>Modo Noturno</label>
+                  <p class="setting-description">Tema escuro para os olhos</p>
+                </div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" [checked]="darkMode$ | async" (change)="toggleDarkMode()">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
           </div>
         </div>
 

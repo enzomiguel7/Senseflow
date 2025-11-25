@@ -5,6 +5,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { SensorService } from '../services/sensor.services';
 import { UserDetails, UserService } from '../services/user.service';
 import { Observable } from 'rxjs';
+import { ThemeService } from '../services/theme.service';
 
 @Component({
   selector: 'app-content',
@@ -21,7 +22,8 @@ export class ContentComponent implements OnInit {
   constructor(
     private router: Router,
     private sensorService: SensorService,
-    private userService: UserService
+    private userService: UserService,
+    private themeService: ThemeService
   ) {}
 
   ngOnInit() {
