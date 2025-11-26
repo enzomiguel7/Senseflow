@@ -112,28 +112,52 @@
       <div class="modal-overlay" *ngIf="showDeleteModal" [class.active]="showDeleteModal" (click)="closeDeleteModal()"></div>
       <div class="confirmation-modal delete-modal" *ngIf="showDeleteModal" [class.active]="showDeleteModal">
         <div class="modal-header modal-header-danger">
-          <span class="material-symbols-outlined danger-icon">warning</span>
-          <h3>Excluir Conta Permanentemente</h3>
+          <div class="header-content">
+            <span class="material-symbols-outlined header-icon">error</span>
+            <div>
+              <h3>Confirmação de Exclusão</h3>
+              <p class="header-subtitle">Esta ação não pode ser desfeita</p>
+            </div>
+          </div>
+          <button class="modal-close" (click)="closeDeleteModal()">
+            <span class="material-symbols-outlined">close</span>
+          </button>
         </div>
         <div class="modal-body">
-          <p class="warning-text">⚠️ <strong>Esta ação é irreversível!</strong></p>
-          <p>Ao excluir sua conta, você perderá:</p>
-          <ul class="warning-list">
-            <li>Todos os seus dados e configurações</li>
-            <li>Histórico completo de eventos</li>
-            <li>Relatórios e estatísticas</li>
-            <li>Acesso permanente ao sistema</li>
-          </ul>
-          <p class="final-warning">Tem certeza que deseja continuar?</p>
+          <div class="critical-action-banner-danger">
+            <span class="material-symbols-outlined">warning</span>
+            <span>AÇÃO CRÍTICA</span>
+          </div>
+          <p class="modal-description">Você está prestes a excluir permanentemente sua conta do sistema SenseFlow.</p>
+          <div class="info-box">
+            <h4>Consequências desta ação:</h4>
+            <ul class="consequence-list">
+              <li>
+                <span class="material-symbols-outlined">database</span>
+                <span>Todos os dados e configurações serão removidos</span>
+              </li>
+              <li>
+                <span class="material-symbols-outlined">history</span>
+                <span>Histórico completo de eventos será apagado</span>
+              </li>
+              <li>
+                <span class="material-symbols-outlined">analytics</span>
+                <span>Relatórios e estatísticas não poderão ser recuperados</span>
+              </li>
+              <li>
+                <span class="material-symbols-outlined">block</span>
+                <span>O acesso ao sistema será permanentemente revogado</span>
+              </li>
+            </ul>
+          </div>
         </div>
         <div class="modal-footer">
-          <button class="modal-button cancel" (click)="closeDeleteModal()">
-            <span class="material-symbols-outlined">close</span>
+          <button class="btn-secondary" (click)="closeDeleteModal()">
             Cancelar
           </button>
-          <button class="modal-button danger" (click)="confirmDeleteAccount()">
+          <button class="btn-danger" (click)="confirmDeleteAccount()">
             <span class="material-symbols-outlined">delete_forever</span>
-            Sim, Excluir Conta
+            Confirmar Exclusão
           </button>
         </div>
       </div>
@@ -142,27 +166,49 @@
       <div class="modal-overlay" *ngIf="showResetModal" [class.active]="showResetModal" (click)="closeResetModal()"></div>
       <div class="confirmation-modal reset-modal" *ngIf="showResetModal" [class.active]="showResetModal">
         <div class="modal-header modal-header-warning">
-          <span class="material-symbols-outlined warning-icon">info</span>
-          <h3>Resetar Todos os Registros</h3>
+          <div class="header-content">
+            <span class="material-symbols-outlined header-icon">notification_important</span>
+            <div>
+              <h3>Confirmação de Reset</h3>
+              <p class="header-subtitle">Limpeza completa de registros</p>
+            </div>
+          </div>
+          <button class="modal-close" (click)="closeResetModal()">
+            <span class="material-symbols-outlined">close</span>
+          </button>
         </div>
         <div class="modal-body">
-          <p class="warning-text">⚠️ <strong>Atenção!</strong></p>
-          <p>Esta ação irá apagar permanentemente:</p>
-          <ul class="warning-list">
-            <li>Todos os eventos registrados</li>
-            <li>Histórico de entradas e saídas</li>
-            <li>Dados de data e horário</li>
-          </ul>
-          <p class="final-warning">Deseja realmente limpar todos os registros?</p>
+          <div class="warning-banner warning">
+            <span class="material-symbols-outlined">info</span>
+            <span>Operação de Manutenção - Requer Confirmação</span>
+          </div>
+          <p class="modal-description">Esta operação irá remover permanentemente todos os registros de eventos do sistema.</p>
+          <div class="info-box">
+            <h4>Dados que serão removidos:</h4>
+            <ul class="consequence-list">
+              <li>
+                <span class="material-symbols-outlined">event</span>
+                <span>Todos os eventos registrados no sistema</span>
+              </li>
+              <li>
+                <span class="material-symbols-outlined">schedule</span>
+                <span>Histórico completo de entradas e saídas</span>
+              </li>
+              <li>
+                <span class="material-symbols-outlined">calendar_month</span>
+                <span>Dados de data e horário de todos os registros</span>
+              </li>
+            </ul>
+          </div>
+          <p class="note-text"><strong>Nota:</strong> Sua conta e configurações permanecerão intactas.</p>
         </div>
         <div class="modal-footer">
-          <button class="modal-button cancel" (click)="closeResetModal()">
-            <span class="material-symbols-outlined">close</span>
+          <button class="btn-secondary" (click)="closeResetModal()">
             Cancelar
           </button>
-          <button class="modal-button warning" (click)="confirmResetEvents()">
+          <button class="btn-warning" (click)="confirmResetEvents()">
             <span class="material-symbols-outlined">delete_sweep</span>
-            Sim, Resetar Registros
+            Confirmar Reset
           </button>
         </div>
       </div>
