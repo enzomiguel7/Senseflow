@@ -1,5 +1,10 @@
 <div class="register-page">
     
+    <!-- Botão Voltar -->
+    <button class="btn-back" routerLink="/home" title="Voltar para Home">
+        <span class="material-symbols-outlined">arrow_back</span>
+    </button>
+
     <!-- Left Side - Welcome Section -->
     <div class="welcome-side">
         <div class="welcome-content">
@@ -88,7 +93,7 @@
                 <div class="form-options">
                     <label class="terms-check">
                         <input type="checkbox" [(ngModel)]="acceptTerms" name="acceptTerms" required>
-                        <span>Aceito os <a href="#" class="terms-link">termos e condições</a></span>
+                        <span>Aceito os <a routerLink="/termos-condicoes" target="_blank" class="terms-link">termos e condições</a></span>
                     </label>
                 </div>
 
@@ -96,6 +101,7 @@
                 <button 
                     type="submit" 
                     class="btn-register"
+                    [disabled]="!registerForm.valid || !acceptTerms"
                 >
                     Criar Conta
                 </button>

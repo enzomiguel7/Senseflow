@@ -108,6 +108,65 @@
         </div>
       </div>
 
+      <!-- Modal de Confirmação de Exclusão de Conta -->
+      <div class="modal-overlay" *ngIf="showDeleteModal" [class.active]="showDeleteModal" (click)="closeDeleteModal()"></div>
+      <div class="confirmation-modal delete-modal" *ngIf="showDeleteModal" [class.active]="showDeleteModal">
+        <div class="modal-header modal-header-danger">
+          <span class="material-symbols-outlined danger-icon">warning</span>
+          <h3>Excluir Conta Permanentemente</h3>
+        </div>
+        <div class="modal-body">
+          <p class="warning-text">⚠️ <strong>Esta ação é irreversível!</strong></p>
+          <p>Ao excluir sua conta, você perderá:</p>
+          <ul class="warning-list">
+            <li>Todos os seus dados e configurações</li>
+            <li>Histórico completo de eventos</li>
+            <li>Relatórios e estatísticas</li>
+            <li>Acesso permanente ao sistema</li>
+          </ul>
+          <p class="final-warning">Tem certeza que deseja continuar?</p>
+        </div>
+        <div class="modal-footer">
+          <button class="modal-button cancel" (click)="closeDeleteModal()">
+            <span class="material-symbols-outlined">close</span>
+            Cancelar
+          </button>
+          <button class="modal-button danger" (click)="confirmDeleteAccount()">
+            <span class="material-symbols-outlined">delete_forever</span>
+            Sim, Excluir Conta
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal de Confirmação de Reset de Registros -->
+      <div class="modal-overlay" *ngIf="showResetModal" [class.active]="showResetModal" (click)="closeResetModal()"></div>
+      <div class="confirmation-modal reset-modal" *ngIf="showResetModal" [class.active]="showResetModal">
+        <div class="modal-header modal-header-warning">
+          <span class="material-symbols-outlined warning-icon">info</span>
+          <h3>Resetar Todos os Registros</h3>
+        </div>
+        <div class="modal-body">
+          <p class="warning-text">⚠️ <strong>Atenção!</strong></p>
+          <p>Esta ação irá apagar permanentemente:</p>
+          <ul class="warning-list">
+            <li>Todos os eventos registrados</li>
+            <li>Histórico de entradas e saídas</li>
+            <li>Dados de data e horário</li>
+          </ul>
+          <p class="final-warning">Deseja realmente limpar todos os registros?</p>
+        </div>
+        <div class="modal-footer">
+          <button class="modal-button cancel" (click)="closeResetModal()">
+            <span class="material-symbols-outlined">close</span>
+            Cancelar
+          </button>
+          <button class="modal-button warning" (click)="confirmResetEvents()">
+            <span class="material-symbols-outlined">delete_sweep</span>
+            Sim, Resetar Registros
+          </button>
+        </div>
+      </div>
+
       <div class="settings-grid">
         <div class="card settings-card">
           <div class="card-header">
@@ -177,15 +236,14 @@
       </div>
 
       <div class="action-buttons">
-        <button class="action-button primary">
-          <span class="material-symbols-outlined">save</span>
-          Salvar Alterações
+        <button class="action-button primary" (click)="exportReport()">
+          <span class="material-symbols-outlined">download</span>
+          Exportar Relatório
         </button>
         <button class="action-button danger-outline" (click)="deleteAccount()">
-  <span class="material-symbols-outlined">delete</span>
-  Excluir Conta
-</button>
-
+          <span class="material-symbols-outlined">delete</span>
+          Excluir Conta
+        </button>
       </div>
     </section>
   </main>

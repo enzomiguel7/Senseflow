@@ -23,5 +23,5 @@ export const appRoutes: Routes = [
   { path: 'charts', component: EventChart, canActivate:[AuthGuard]},
   { path: 'event-chart', component: EventChart, canActivate:[AuthGuard]},
   { path: 'central-de-ajuda', component: CentralDeAjuda, canActivate:[AuthGuard]},
-  { path: 'termos-condicoes', component: TermosComponent},
+  { path: 'termos-condicoes', component: TermosComponent },
 ];

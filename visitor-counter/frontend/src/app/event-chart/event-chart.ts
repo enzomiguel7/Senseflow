@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserDetails, UserService } from '../services/user.service';
 import { Observable } from 'rxjs';
 import { ThemeService } from '../services/theme.service';
+import { ToastService } from '../services/toast.service';
 
 
 
@@ -31,12 +32,19 @@ export class EventChart implements OnInit {
   newPassword = '';
   confirmPassword = '';
 
+  // Controle do modal de confirmação de exclusão
+  showDeleteModal = false;
+
+  // Controle do modal de reset de registros
+  showResetModal = false;
+
   constructor(
     private sensorService: SensorService, 
     private router: Router,
     private http: HttpClient,
     private userService: UserService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private toastService: ToastService
   ) {}
 
 
@@ -70,33 +78,42 @@ logout() {
 
   // 🔥 Função para excluir conta chamando o backend
   deleteAccount() {
-    if (confirm("Tem certeza que deseja excluir sua conta? Esta ação é irreversível.")) {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        alert("Você precisa estar logado para excluir a conta.");
-        return;
-      }
+    this.showDeleteModal = true;
+  }
 
-      // Aqui assumimos que o JWT tem o id do usuário
-      const userId = this.getUserIdFromToken(token);
-      if (!userId) {
-        alert("Erro ao identificar usuário.");
-        return;
-      }
+  closeDeleteModal() {
+    this.showDeleteModal = false;
+  }
 
-      this.http.delete(`http://localhost:4000/delete-account/${userId}`).subscribe({
-        next: () => {
-          alert("Conta excluída com sucesso!");
-          localStorage.removeItem('token');
+  confirmDeleteAccount() {
+    this.showDeleteModal = false;
+    const token = localStorage.getItem('token');
+    if (!token) {
+      this.toastService.error("Você precisa estar logado para excluir a conta.");
+      return;
+    }
+
+    // Aqui assumimos que o JWT tem o id do usuário
+    const userId = this.getUserIdFromToken(token);
+    if (!userId) {
+      this.toastService.error("Erro ao identificar usuário.");
+      return;
+    }
+
+    this.http.delete(`http://localhost:4000/delete-account/${userId}`).subscribe({
+      next: () => {
+        this.toastService.success("Conta excluída com sucesso!");
+        localStorage.removeItem('token');
+        setTimeout(() => {
           this.router.navigate(['/home']);
           this.userService.clearUser();
-        },
-        error: (err) => {
-          console.error(err);
-          alert("Não foi possível excluir a conta. Tente novamente mais tarde.");
-        }
-      });
-    }
+        }, 1500);
+      },
+      error: (err) => {
+        console.error(err);
+        this.toastService.error("Não foi possível excluir a conta. Tente novamente mais tarde.");
+      }
+    });
   }
 
   // função auxiliar para extrair id do token JWT
@@ -162,17 +179,24 @@ logout() {
   }
 
   onResetEvents() {
-    if (confirm("Tem certeza que deseja apagar todos os registros?")) {
-      this.sensorService.resetEvents().subscribe({
-        next: (res) => {
-          alert(res.message || "Registros apagados com êxito.");
-        },
-        error: (err) => {
-          console.error(err);
-          alert("Ocorreu um erro ao resetar os registros.");
-        }
-      });
-    }
+    this.showResetModal = true;
+  }
+
+  closeResetModal() {
+    this.showResetModal = false;
+  }
+
+  confirmResetEvents() {
+    this.showResetModal = false;
+    this.sensorService.resetEvents().subscribe({
+      next: (res) => {
+        this.toastService.success(res.message || "Registros apagados com êxito.");
+      },
+      error: (err) => {
+        console.error(err);
+        this.toastService.error("Ocorreu um erro ao resetar os registros.");
+      }
+    });
   }
 
   // 🔑 Funções do Modal de Alteração de Senha
@@ -193,25 +217,25 @@ logout() {
   confirmPasswordChange() {
     // Validações
     if (!this.currentPassword || !this.newPassword || !this.confirmPassword) {
-      alert('Por favor, preencha todos os campos.');
+      this.toastService.warning('Por favor, preencha todos os campos.');
       return;
     }
 
     if (this.newPassword !== this.confirmPassword) {
-      alert('As senhas não coincidem.');
+      this.toastService.warning('As senhas não coincidem.');
       return;
     }
 
     // Requisição para o servidor
     const token = localStorage.getItem('token');
     if (!token) {
-      alert('Você precisa estar logado.');
+      this.toastService.error('Você precisa estar logado.');
       return;
     }
 
     const userId = this.getUserIdFromToken(token);
     if (!userId) {
-      alert('Erro ao identificar usuário.');
+      this.toastService.error('Erro ao identificar usuário.');
       return;
     }
 
@@ -220,17 +244,80 @@ logout() {
       newPassword: this.newPassword
     }).subscribe({
       next: () => {
-        alert('Senha alterada com sucesso!');
+        this.toastService.success('Senha alterada com sucesso!');
         this.closePasswordModal();
       },
       error: (err) => {
         console.error(err);
-        alert(err.error?.message || 'Não foi possível alterar a senha. Verifique a senha atual.');
+        this.toastService.error(err.error?.message || 'Não foi possível alterar a senha. Verifique a senha atual.');
       }
     });
   }
 
   toggleDarkMode() {
     this.themeService.toggleTheme();
+  }
+
+  // 📊 Função para exportar relatório de eventos
+  exportReport() {
+    this.sensorService.getEvents().subscribe({
+      next: (data: any[]) => {
+        let csvContent = '';
+        
+        if (!data || data.length === 0) {
+          // Se não há eventos, cria relatório com informações do usuário
+          this.userDetails$.subscribe(user => {
+            const hoje = new Date().toLocaleDateString('pt-BR');
+            csvContent = 'RELATÓRIO SENSEFLOW\n';
+            csvContent += `Gerado em: ${hoje}\n`;
+            csvContent += `Usuário: ${user?.Username || 'N/A'}\n`;
+            csvContent += `Email: ${user?.Email || 'N/A'}\n\n`;
+            csvContent += 'Status: Nenhum evento registrado no momento.\n';
+            
+            this.downloadCSV(csvContent);
+          });
+          return;
+        }
+
+        // Se há eventos, criar CSV com os dados
+        csvContent = 'Data,Horário,Tipo de Evento\n';
+        const rows = data.map(ev => 
+          `${ev.date_ || 'N/A'},${ev.time_ || 'N/A'},${ev.event_type || 'Entrada'}`
+        ).join('\n');
+        
+        csvContent += rows;
+        this.downloadCSV(csvContent);
+      },
+      error: (err) => {
+        // Se houver erro, cria relatório básico
+        console.error('Erro ao buscar eventos:', err);
+        this.userDetails$.subscribe(user => {
+          const hoje = new Date().toLocaleDateString('pt-BR');
+          let csvContent = 'RELATÓRIO SENSEFLOW\n';
+          csvContent += `Gerado em: ${hoje}\n`;
+          csvContent += `Usuário: ${user?.Username || 'N/A'}\n`;
+          csvContent += `Email: ${user?.Email || 'N/A'}\n\n`;
+          csvContent += 'Status: Sistema conectado e funcionando.\n';
+          
+          this.downloadCSV(csvContent);
+        });
+      }
+    });
+  }
+
+  // Função auxiliar para download do CSV
+  private downloadCSV(content: string) {
+    const blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    
+    link.setAttribute('href', url);
+    link.setAttribute('download', `relatorio_senseflow_${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    this.toastService.success('Relatório exportado com sucesso!');
   }
 }

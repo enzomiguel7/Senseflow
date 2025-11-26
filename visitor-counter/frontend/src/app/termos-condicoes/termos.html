@@ -1,25 +1,155 @@
-<div class="modal-overlay">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h2>Termos e Condições de Uso</h2>
-      <button class="close-button" (click)="close()">&times;</button>
+<div class="termos-page">
+  <div class="termos-container">
+    
+    <!-- Header -->
+    <div class="termos-header">
+      <div class="logo-area">
+        <span class="material-symbols-outlined logo-icon">gavel</span>
+        <h1>Termos e Condições de Uso</h1>
+      </div>
+      <p class="update-date">Última atualização: 25 de novembro de 2025</p>
     </div>
 
-    <div class="modal-body">
-      <p>Última atualização: 23 de Novembro de 2025</p>
+    <!-- Content -->
+    <div class="termos-content">
 
-      <h3>1. Aceitação dos Termos</h3>
-      <p>Ao utilizar a plataforma, você concorda em se submeter a estes Termos.</p>
+      <!-- Seção 1 -->
+      <section class="termos-section">
+        <h2>1. Aceitação dos Termos</h2>
+        <p>
+          Ao acessar e usar o SenseFlow, você concorda em cumprir e estar vinculado aos seguintes 
+          termos e condições de uso. Se você não concordar com qualquer parte destes termos, 
+          não deverá usar nossos serviços.
+        </p>
+      </section>
 
-      <h3>2. Conduta do Usuário</h3>
-      <p>Você é responsável por toda atividade que ocorrer sob sua conta.</p>
+      <!-- Seção 2 -->
+      <section class="termos-section">
+        <h2>2. Descrição do Serviço</h2>
+        <p>
+          O SenseFlow é uma plataforma de análise de dados e monitoramento de sensores que permite 
+          aos usuários visualizar, analisar e exportar dados coletados em tempo real. O serviço 
+          inclui dashboards interativos, relatórios personalizados e ferramentas de configuração.
+        </p>
+      </section>
 
-      <h3>3. Limitação de Garantia</h3>
-      <p>O serviço é fornecido "como está".</p>
+      <!-- Seção 3 -->
+      <section class="termos-section">
+        <h2>3. Cadastro e Conta de Usuário</h2>
+        <p>Para utilizar o SenseFlow, você deve:</p>
+        <ul>
+          <li>Fornecer informações verdadeiras, precisas e completas durante o cadastro</li>
+          <li>Manter a confidencialidade de sua senha e conta</li>
+          <li>Notificar-nos imediatamente sobre qualquer uso não autorizado de sua conta</li>
+          <li>Ser responsável por todas as atividades realizadas em sua conta</li>
+        </ul>
+      </section>
+
+      <!-- Seção 4 -->
+      <section class="termos-section">
+        <h2>4. Privacidade e Proteção de Dados</h2>
+        <p>
+          Respeitamos sua privacidade e estamos comprometidos com a proteção de seus dados pessoais. 
+          Coletamos apenas as informações necessárias para fornecer nossos serviços:
+        </p>
+        <ul>
+          <li><strong>Dados de cadastro:</strong> Nome, e-mail e senha criptografada</li>
+          <li><strong>Dados de uso:</strong> Eventos registrados, configurações e preferências</li>
+          <li><strong>Dados técnicos:</strong> Logs de sistema e informações de dispositivos</li>
+        </ul>
+        <p>
+          Seus dados não serão compartilhados com terceiros sem seu consentimento explícito, 
+          exceto quando exigido por lei.
+        </p>
+      </section>
+
+      <!-- Seção 5 -->
+      <section class="termos-section">
+        <h2>5. Uso Aceitável</h2>
+        <p>Você concorda em NÃO:</p>
+        <ul>
+          <li>Usar o serviço para fins ilegais ou não autorizados</li>
+          <li>Tentar acessar áreas restritas do sistema</li>
+          <li>Interferir ou interromper o funcionamento do serviço</li>
+          <li>Transmitir vírus, malware ou código malicioso</li>
+          <li>Realizar engenharia reversa ou tentar extrair o código-fonte</li>
+          <li>Usar o serviço para coletar dados de outros usuários</li>
+        </ul>
+      </section>
+
+      <!-- Seção 6 -->
+      <section class="termos-section">
+        <h2>6. Propriedade Intelectual</h2>
+        <p>
+          Todo o conteúdo, design, logotipos, código e funcionalidades do SenseFlow são de 
+          propriedade exclusiva da plataforma e estão protegidos por leis de direitos autorais 
+          e propriedade intelectual. Você não pode copiar, modificar, distribuir ou vender 
+          qualquer parte do serviço sem autorização prévia por escrito.
+        </p>
+      </section>
+
+      <!-- Seção 7 -->
+      <section class="termos-section">
+        <h2>7. Limitação de Responsabilidade</h2>
+        <p>
+          O SenseFlow é fornecido "como está" e "conforme disponível". Não garantimos que o 
+          serviço será ininterrupto, livre de erros ou completamente seguro. Em nenhuma 
+          circunstância seremos responsáveis por:
+        </p>
+        <ul>
+          <li>Perda de dados ou informações</li>
+          <li>Danos diretos, indiretos, incidentais ou consequenciais</li>
+          <li>Falhas técnicas ou interrupções no serviço</li>
+          <li>Decisões tomadas com base nos dados fornecidos pela plataforma</li>
+        </ul>
+      </section>
+
+      <!-- Seção 8 -->
+      <section class="termos-section">
+        <h2>8. Modificações nos Termos</h2>
+        <p>
+          Reservamo-nos o direito de modificar estes termos a qualquer momento. Notificaremos 
+          os usuários sobre mudanças significativas através de e-mail ou avisos na plataforma. 
+          O uso continuado do serviço após alterações constitui aceitação dos novos termos.
+        </p>
+      </section>
+
+      <!-- Seção 9 -->
+      <section class="termos-section">
+        <h2>9. Cancelamento e Exclusão de Conta</h2>
+        <p>
+          Você pode solicitar a exclusão de sua conta a qualquer momento através das 
+          configurações da plataforma. Ao excluir sua conta:
+        </p>
+        <ul>
+          <li>Todos os seus dados pessoais serão permanentemente removidos</li>
+          <li>O acesso aos serviços será imediatamente encerrado</li>
+          <li>Esta ação é irreversível e não pode ser desfeita</li>
+        </ul>
+      </section>
+
+      <!-- Seção 10 -->
+      <section class="termos-section">
+        <h2>10. Contato</h2>
+        <p>
+          Para dúvidas, sugestões ou solicitações relacionadas a estes termos, entre em contato 
+          conosco através do e-mail:
+        </p>
+        <p class="contact-email">
+          <strong>senseflow80@gmail.com</strong>
+        </p>
+      </section>
+
     </div>
 
-    <div class="modal-footer">
-      <button class="accept-button" (click)="accept()">Aceitar e Fechar</button>
+    <!-- Footer -->
+    <div class="termos-footer">
+      <button routerLink="/register" class="btn-voltar">
+        <span class="material-symbols-outlined">arrow_back</span>
+        Voltar ao Cadastro
+      </button>
+      <p class="footer-text">© 2025 SenseFlow. Todos os direitos reservados.</p>
     </div>
+
   </div>
 </div>

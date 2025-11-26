@@ -35,6 +35,48 @@ body {
 }
 
 /* ========================================
+   BOTÃO VOLTAR
+   ======================================== */
+
+.btn-back {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    z-index: 1000;
+    width: 48px;
+    height: 48px;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, var(--color-highlight) 0%, var(--color-secondary) 100%);
+}
+
+.btn-back:hover .material-symbols-outlined {
+    color: white;
+}
+
+.btn-back:active {
+    transform: scale(0.95);
+}
+
+.btn-back .material-symbols-outlined {
+    font-size: 24px;
+    color: var(--color-highlight);
+    transition: color 0.3s ease;
+}
+
+/* ========================================
    LAYOUT PRINCIPAL
    ======================================== */
 

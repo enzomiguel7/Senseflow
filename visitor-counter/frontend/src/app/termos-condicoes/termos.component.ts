@@ -1,23 +1,13 @@
-
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-termos',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './termos.html',
   styleUrls: ['./termos.css']
 })
 export class TermosComponent {
-  @Output() accepted = new EventEmitter<void>();
-  @Output() closed = new EventEmitter<void>();
-
-  accept() {
-    this.accepted.emit();
-  }
-
-  close() {
-    this.closed.emit();
-  }
 }
