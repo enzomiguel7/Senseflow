@@ -1,11 +1,4 @@
 services:
-  mosquitto:
-    image: eclipse-mosquitto:2.0
-    ports:
-      - "1883:1883"
-    volumes:
-      - ./backend/mosquitto/config:/mosquitto/config
-
   mariadb:
     image: mariadb:12
     environment:
@@ -13,29 +6,24 @@ services:
       MARIADB_USER: "${DB_USER}"
       MARIADB_PASSWORD: "${DB_PASS}"
       MARIADB_DATABASE: RegistrosSensor
-      ### NÃO PRECISA MAPEAR PORTA, POIS O BANCO DE DADOS NÃO SERÁ UTILIZADO POR NENHUM SERVIÇO EXTERNO
     volumes:
       - mariadb_data:/var/lib/mysql
       - ./db/init:/docker-entrypoint-initdb.d
-      
-      
 
-  backend:  # <-- tem que estar dentro de "services:", alinhado com "mariadb" e "mosquitto"
+  backend:
     build: ./backend/DockerBuild
     environment:
       DB_HOST: mariadb
       DB_USER: "${DB_USER}"
       DB_PASS: "${DB_PASS}"
       DB_NAME: RegistrosSensor
-      MQTT_BROKER_URL: mqtt://mosquitto:1883
 
-      MQTT_USER: "${MQTT_USER}"
-      MQTT_PASS: "${MQTT_PASS}"
+      # ==== MQTT PÚBLICO ====
+      MQTT_BROKER_URL: mqtt://test.mosquitto.org:1883
 
     ports:
       - "3000:3000"
     depends_on:
-      - mosquitto
       - mariadb
 
 volumes:

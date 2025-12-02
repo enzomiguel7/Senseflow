@@ -24,11 +24,9 @@ const server = http.createServer(app);
 const io = new SocketIOServer(server, { cors: { origin: "*" } });
 
 /* ============ MQTT ============ */
-const mqttUrl = process.env.MQTT_BROKER_URL || "mqtt://mosquitto:1883";
-const client = mqtt.connect(mqttUrl, {
-  username: process.env.MQTT_USER,
-  password: process.env.MQTT_PASS
-});
+const mqttUrl = process.env.MQTT_BROKER_URL || "mqtt://test.mosquitto.org:1883";
+
+const client = mqtt.connect(mqttUrl);
 
 client.on("connect", () => {
   console.log("✅ MQTT conectado em:", mqttUrl);
@@ -37,6 +35,7 @@ client.on("connect", () => {
     else console.log("📡 Subscrito em sensors/+/barreira");
   });
 });
+
 
 client.on("message", async (topic, payload) => {
   try {
