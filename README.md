@@ -1,11 +1,11 @@
 # SenseFlow 🕒🚶‍♂️
 
 > **Project Status:** Production / Academic Final Project
-> 
-> [**English Version**](#-english) | [**Versão em Português**](#-português)
 
 ---
 🇺🇸 English
+
+
 SenseFlow is a lightweight, real-time visitor tracking system. It records precisely when a person triggers a physical sensor and sends that data via the MQTT protocol to a web-based dashboard. This project is fully containerized using Docker for seamless deployment and scalability.
 
 📡 How it Works
@@ -47,9 +47,11 @@ Install dependencies: npm install
 
 Start application: npm start
 
-<a name="português"></a>
+
 
 🇧🇷 Português
+
+
 O SenseFlow é um sistema leve de monitoramento de visitantes em tempo real. Ele registra precisamente quando uma pessoa aciona um sensor físico e envia esses dados via protocolo MQTT para um painel web. O projeto é totalmente conteinerizado com Docker para facilitar a execução e implantação.
 
 📡 Como Funciona
