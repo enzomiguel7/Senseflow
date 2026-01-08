@@ -8,7 +8,7 @@
 
 SenseFlow is a lightweight, real-time visitor tracking system. It records precisely when a person triggers a physical sensor and sends that data via the MQTT protocol to a web-based dashboard. This project is fully containerized using Docker for seamless deployment and scalability.
 
-📡 How it Works
+***📡 How it Works
 Sensor: An IoT device (e.g., ESP32 or PIR sensor) detects movement and publishes a message to a specific topic.
 
 Broker: A Mosquitto MQTT broker manages the communication between the hardware and the software.
