@@ -1,6 +1,6 @@
 # SenseFlow 🕒🚶‍♂️
 
-> **Project Status:** Production / Academic Final Project
+> **Project Status:**  Academic Final Project
 
 ---
 🇺🇸 English
